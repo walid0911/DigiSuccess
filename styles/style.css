@@ -435,7 +435,7 @@ header #burger-btn div {
   position: relative;
   width: 100vw;
   overflow: hidden;
-  padding: 50px 0;
+  padding: 50px 0 100px;
   background-color: #fdfdfd;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -455,19 +455,20 @@ header #burger-btn div {
 #about .article-container {
   position: relative;
   z-index: 2;
-  width: 85vw;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto auto;
-      grid-template-columns: auto auto;
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #about .article-container article {
+  width: 50%;
   font-family: "poppins", sans-serif;
-  padding: 15px 20px;
-  background-color: #266d78ee;
+  padding: 15px 20px 50px;
+  background-color: #fdfdfd86;
   border-radius: 10px;
   -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
           box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
@@ -476,27 +477,144 @@ header #burger-btn div {
 #about .article-container article h1 {
   font-size: clamp(1.2rem, 5vw, 2rem);
   font-weight: 500;
-  color: #9ed155;
+  color: #0c2327;
   margin-bottom: 10px;
 }
 
 #about .article-container article p {
   font-size: clamp(0.8rem, 5vw, 1rem);
   font-weight: 300;
+  color: #18464e;
+}
+
+#about .article-container .about-cards {
+  position: relative;
+  top: 2em;
+  width: 50%;
+  font-family: 'poppins', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#about .article-container .about-cards .card {
+  width: 60%;
+  margin-bottom: 2em;
+}
+
+#about .article-container .about-cards .card .question {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 2;
+  padding: 1em 2em;
+  background: transparent;
+  color: #266d78;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+
+#about .article-container .about-cards .card .question:hover {
+  background: #50b883;
   color: #fdfdfd;
+}
+
+#about .article-container .about-cards .card .question::-webkit-details-marker {
+  display: none;
+}
+
+#about .article-container .about-cards .card .question .drop {
+  position: absolute;
+  right: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#about .article-container .about-cards .card .question .drop .left, #about .article-container .about-cards .card .question .drop .right {
+  position: relative;
+  width: 15px;
+  height: 3px;
+  background: #1c5058;
+  border-radius: 20%;
+}
+
+#about .article-container .about-cards .card .question .drop .left {
+  right: -2.5px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#about .article-container .about-cards .card .question .drop .right {
+  left: -2.5px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+#about .article-container .about-cards .card .content {
+  padding: 10px 20px;
+  background-color: #fdfdfd86;
+  color: #0c2327;
+  font-size: .8rem;
 }
 
 #about::before {
   content: '';
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #266d78;
+  background-color: #266d78ee;
   height: 100%;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+details[open] summary ~ * {
+  -webkit-animation: sweep .3s ease-in;
+          animation: sweep .3s ease-in;
+}
+
+@-webkit-keyframes sweep {
+  from {
+    opacity: 0;
+    margin-top: -20px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+@keyframes sweep {
+  from {
+    opacity: 0;
+    margin-top: -20px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
 }
 
 .animate::before {
@@ -518,6 +636,13 @@ header #burger-btn div {
   }
 }
 
+.flip .drop {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: .3s ease-in;
+  transition: .3s ease-in;
+}
+
 .random-shape:after {
   font-family: FontAwesome;
   content: "\f04d";
@@ -525,23 +650,23 @@ header #burger-btn div {
 
 @-webkit-keyframes shape-1 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(158deg);
-            transform: translate3d(0, 0, 0) rotate(158deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(82deg);
+            transform: translate3d(0, 0, 0) rotate(82deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(518deg);
-            transform: translate3d(0, 0, 100%) rotate(518deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(442deg);
+            transform: translate3d(0, 0, 100%) rotate(442deg);
   }
 }
 
 @keyframes shape-1 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(158deg);
-            transform: translate3d(0, 0, 0) rotate(158deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(82deg);
+            transform: translate3d(0, 0, 0) rotate(82deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(518deg);
-            transform: translate3d(0, 0, 100%) rotate(518deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(442deg);
+            transform: translate3d(0, 0, 100%) rotate(442deg);
   }
 }
 
@@ -549,36 +674,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-1 45s linear infinite;
-          animation: shape-1 45s linear infinite;
+  -webkit-animation: shape-1 54s linear infinite;
+          animation: shape-1 54s linear infinite;
 }
 
 .shape-container--1 .random-shape:after {
   margin: 0 64.2rem;
-  color: #cda1ff;
+  color: #ff94a1;
   font-size: 0.84rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-2 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(140deg);
-            transform: translate3d(0, 0, 0) rotate(140deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(314deg);
+            transform: translate3d(0, 0, 0) rotate(314deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(500deg);
-            transform: translate3d(0, 0, 100%) rotate(500deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(674deg);
+            transform: translate3d(0, 0, 100%) rotate(674deg);
   }
 }
 
 @keyframes shape-2 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(140deg);
-            transform: translate3d(0, 0, 0) rotate(140deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(314deg);
+            transform: translate3d(0, 0, 0) rotate(314deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(500deg);
-            transform: translate3d(0, 0, 100%) rotate(500deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(674deg);
+            transform: translate3d(0, 0, 100%) rotate(674deg);
   }
 }
 
@@ -586,36 +711,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-2 37s linear infinite;
-          animation: shape-2 37s linear infinite;
+  -webkit-animation: shape-2 51s linear infinite;
+          animation: shape-2 51s linear infinite;
 }
 
 .shape-container--2 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #45ffdc;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #9300c9;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-3 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(246deg);
-            transform: translate3d(0, 0, 0) rotate(246deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(39deg);
+            transform: translate3d(0, 0, 0) rotate(39deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(606deg);
-            transform: translate3d(0, 0, 100%) rotate(606deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(399deg);
+            transform: translate3d(0, 0, 100%) rotate(399deg);
   }
 }
 
 @keyframes shape-3 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(246deg);
-            transform: translate3d(0, 0, 0) rotate(246deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(39deg);
+            transform: translate3d(0, 0, 0) rotate(39deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(606deg);
-            transform: translate3d(0, 0, 100%) rotate(606deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(399deg);
+            transform: translate3d(0, 0, 100%) rotate(399deg);
   }
 }
 
@@ -623,36 +748,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-3 52s linear infinite;
-          animation: shape-3 52s linear infinite;
+  -webkit-animation: shape-3 31s linear infinite;
+          animation: shape-3 31s linear infinite;
 }
 
 .shape-container--3 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #45ffdc;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 69.2rem;
+  color: #31b4ff;
+  font-size: 1.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-4 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(254deg);
-            transform: translate3d(0, 0, 0) rotate(254deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(109deg);
+            transform: translate3d(0, 0, 0) rotate(109deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(614deg);
-            transform: translate3d(0, 0, 100%) rotate(614deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(469deg);
+            transform: translate3d(0, 0, 100%) rotate(469deg);
   }
 }
 
 @keyframes shape-4 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(254deg);
-            transform: translate3d(0, 0, 0) rotate(254deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(109deg);
+            transform: translate3d(0, 0, 0) rotate(109deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(614deg);
-            transform: translate3d(0, 0, 100%) rotate(614deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(469deg);
+            transform: translate3d(0, 0, 100%) rotate(469deg);
   }
 }
 
@@ -660,36 +785,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-4 56s linear infinite;
-          animation: shape-4 56s linear infinite;
+  -webkit-animation: shape-4 58s linear infinite;
+          animation: shape-4 58s linear infinite;
 }
 
 .shape-container--4 .random-shape:after {
-  margin: 0 64.2rem;
-  color: #9300c9;
-  font-size: 0.84rem;
-  content: "";
+  margin: 0 70.2rem;
+  color: #ffef96;
+  font-size: 2.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-5 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(284deg);
-            transform: translate3d(0, 0, 0) rotate(284deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(174deg);
+            transform: translate3d(0, 0, 0) rotate(174deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(644deg);
-            transform: translate3d(0, 0, 100%) rotate(644deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(534deg);
+            transform: translate3d(0, 0, 100%) rotate(534deg);
   }
 }
 
 @keyframes shape-5 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(284deg);
-            transform: translate3d(0, 0, 0) rotate(284deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(174deg);
+            transform: translate3d(0, 0, 0) rotate(174deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(644deg);
-            transform: translate3d(0, 0, 100%) rotate(644deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(534deg);
+            transform: translate3d(0, 0, 100%) rotate(534deg);
   }
 }
 
@@ -697,36 +822,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-5 33s linear infinite;
-          animation: shape-5 33s linear infinite;
+  -webkit-animation: shape-5 42s linear infinite;
+          animation: shape-5 42s linear infinite;
 }
 
 .shape-container--5 .random-shape:after {
-  margin: 0 66.2rem;
-  color: #ff94a1;
-  font-size: 1.24rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #31b4ff;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-6 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(125deg);
-            transform: translate3d(0, 0, 0) rotate(125deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(346deg);
+            transform: translate3d(0, 0, 0) rotate(346deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(485deg);
-            transform: translate3d(0, 0, 100%) rotate(485deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(706deg);
+            transform: translate3d(0, 0, 100%) rotate(706deg);
   }
 }
 
 @keyframes shape-6 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(125deg);
-            transform: translate3d(0, 0, 0) rotate(125deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(346deg);
+            transform: translate3d(0, 0, 0) rotate(346deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(485deg);
-            transform: translate3d(0, 0, 100%) rotate(485deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(706deg);
+            transform: translate3d(0, 0, 100%) rotate(706deg);
   }
 }
 
@@ -734,36 +859,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-6 58s linear infinite;
-          animation: shape-6 58s linear infinite;
+  -webkit-animation: shape-6 46s linear infinite;
+          animation: shape-6 46s linear infinite;
 }
 
 .shape-container--6 .random-shape:after {
   margin: 0 70.2rem;
-  color: #31b4ff;
+  color: #4800c0;
   font-size: 2.04rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-7 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(251deg);
-            transform: translate3d(0, 0, 0) rotate(251deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(97deg);
+            transform: translate3d(0, 0, 0) rotate(97deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(611deg);
-            transform: translate3d(0, 0, 100%) rotate(611deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(457deg);
+            transform: translate3d(0, 0, 100%) rotate(457deg);
   }
 }
 
 @keyframes shape-7 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(251deg);
-            transform: translate3d(0, 0, 0) rotate(251deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(97deg);
+            transform: translate3d(0, 0, 0) rotate(97deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(611deg);
-            transform: translate3d(0, 0, 100%) rotate(611deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(457deg);
+            transform: translate3d(0, 0, 100%) rotate(457deg);
   }
 }
 
@@ -771,36 +896,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-7 40s linear infinite;
-          animation: shape-7 40s linear infinite;
+  -webkit-animation: shape-7 34s linear infinite;
+          animation: shape-7 34s linear infinite;
 }
 
 .shape-container--7 .random-shape:after {
-  margin: 0 70.2rem;
-  color: #ffef96;
-  font-size: 2.04rem;
-  content: "";
+  margin: 0 61.2rem;
+  color: #4800c0;
+  font-size: 0.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-8 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(197deg);
-            transform: translate3d(0, 0, 0) rotate(197deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(139deg);
+            transform: translate3d(0, 0, 0) rotate(139deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(557deg);
-            transform: translate3d(0, 0, 100%) rotate(557deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(499deg);
+            transform: translate3d(0, 0, 100%) rotate(499deg);
   }
 }
 
 @keyframes shape-8 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(197deg);
-            transform: translate3d(0, 0, 0) rotate(197deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(139deg);
+            transform: translate3d(0, 0, 0) rotate(139deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(557deg);
-            transform: translate3d(0, 0, 100%) rotate(557deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(499deg);
+            transform: translate3d(0, 0, 100%) rotate(499deg);
   }
 }
 
@@ -808,36 +933,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-8 52s linear infinite;
-          animation: shape-8 52s linear infinite;
+  -webkit-animation: shape-8 53s linear infinite;
+          animation: shape-8 53s linear infinite;
 }
 
 .shape-container--8 .random-shape:after {
-  margin: 0 61.2rem;
+  margin: 0 65.2rem;
   color: #ff94a1;
-  font-size: 0.24rem;
-  content: "";
+  font-size: 1.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-9 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(54deg);
-            transform: translate3d(0, 0, 0) rotate(54deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(320deg);
+            transform: translate3d(0, 0, 0) rotate(320deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(414deg);
-            transform: translate3d(0, 0, 100%) rotate(414deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(680deg);
+            transform: translate3d(0, 0, 100%) rotate(680deg);
   }
 }
 
 @keyframes shape-9 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(54deg);
-            transform: translate3d(0, 0, 0) rotate(54deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(320deg);
+            transform: translate3d(0, 0, 0) rotate(320deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(414deg);
-            transform: translate3d(0, 0, 100%) rotate(414deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(680deg);
+            transform: translate3d(0, 0, 100%) rotate(680deg);
   }
 }
 
@@ -845,36 +970,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-9 45s linear infinite;
-          animation: shape-9 45s linear infinite;
+  -webkit-animation: shape-9 49s linear infinite;
+          animation: shape-9 49s linear infinite;
 }
 
 .shape-container--9 .random-shape:after {
   margin: 0 69.2rem;
   color: #4800c0;
   font-size: 1.84rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-10 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(142deg);
-            transform: translate3d(0, 0, 0) rotate(142deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(221deg);
+            transform: translate3d(0, 0, 0) rotate(221deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(502deg);
-            transform: translate3d(0, 0, 100%) rotate(502deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(581deg);
+            transform: translate3d(0, 0, 100%) rotate(581deg);
   }
 }
 
 @keyframes shape-10 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(142deg);
-            transform: translate3d(0, 0, 0) rotate(142deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(221deg);
+            transform: translate3d(0, 0, 0) rotate(221deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(502deg);
-            transform: translate3d(0, 0, 100%) rotate(502deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(581deg);
+            transform: translate3d(0, 0, 100%) rotate(581deg);
   }
 }
 
@@ -882,36 +1007,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-10 48s linear infinite;
-          animation: shape-10 48s linear infinite;
+  -webkit-animation: shape-10 50s linear infinite;
+          animation: shape-10 50s linear infinite;
 }
 
 .shape-container--10 .random-shape:after {
-  margin: 0 69.2rem;
-  color: #ff94a1;
-  font-size: 1.84rem;
-  content: "";
+  margin: 0 61.2rem;
+  color: #9300c9;
+  font-size: 0.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-11 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(23deg);
-            transform: translate3d(0, 0, 0) rotate(23deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(209deg);
+            transform: translate3d(0, 0, 0) rotate(209deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(383deg);
-            transform: translate3d(0, 0, 100%) rotate(383deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(569deg);
+            transform: translate3d(0, 0, 100%) rotate(569deg);
   }
 }
 
 @keyframes shape-11 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(23deg);
-            transform: translate3d(0, 0, 0) rotate(23deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(209deg);
+            transform: translate3d(0, 0, 0) rotate(209deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(383deg);
-            transform: translate3d(0, 0, 100%) rotate(383deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(569deg);
+            transform: translate3d(0, 0, 100%) rotate(569deg);
   }
 }
 
@@ -919,36 +1044,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-11 59s linear infinite;
-          animation: shape-11 59s linear infinite;
+  -webkit-animation: shape-11 40s linear infinite;
+          animation: shape-11 40s linear infinite;
 }
 
 .shape-container--11 .random-shape:after {
-  margin: 0 67.2rem;
+  margin: 0 62.2rem;
   color: #4800c0;
-  font-size: 1.44rem;
+  font-size: 0.44rem;
   content: "";
 }
 
 @-webkit-keyframes shape-12 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(132deg);
-            transform: translate3d(0, 0, 0) rotate(132deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(195deg);
+            transform: translate3d(0, 0, 0) rotate(195deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(492deg);
-            transform: translate3d(0, 0, 100%) rotate(492deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(555deg);
+            transform: translate3d(0, 0, 100%) rotate(555deg);
   }
 }
 
 @keyframes shape-12 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(132deg);
-            transform: translate3d(0, 0, 0) rotate(132deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(195deg);
+            transform: translate3d(0, 0, 0) rotate(195deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(492deg);
-            transform: translate3d(0, 0, 100%) rotate(492deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(555deg);
+            transform: translate3d(0, 0, 100%) rotate(555deg);
   }
 }
 
@@ -956,36 +1081,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-12 56s linear infinite;
-          animation: shape-12 56s linear infinite;
+  -webkit-animation: shape-12 55s linear infinite;
+          animation: shape-12 55s linear infinite;
 }
 
 .shape-container--12 .random-shape:after {
-  margin: 0 69.2rem;
-  color: #ff94a1;
-  font-size: 1.84rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #cda1ff;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-13 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(138deg);
-            transform: translate3d(0, 0, 0) rotate(138deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(6deg);
+            transform: translate3d(0, 0, 0) rotate(6deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(498deg);
-            transform: translate3d(0, 0, 100%) rotate(498deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(366deg);
+            transform: translate3d(0, 0, 100%) rotate(366deg);
   }
 }
 
 @keyframes shape-13 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(138deg);
-            transform: translate3d(0, 0, 0) rotate(138deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(6deg);
+            transform: translate3d(0, 0, 0) rotate(6deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(498deg);
-            transform: translate3d(0, 0, 100%) rotate(498deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(366deg);
+            transform: translate3d(0, 0, 100%) rotate(366deg);
   }
 }
 
@@ -993,36 +1118,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-13 31s linear infinite;
-          animation: shape-13 31s linear infinite;
+  -webkit-animation: shape-13 42s linear infinite;
+          animation: shape-13 42s linear infinite;
 }
 
 .shape-container--13 .random-shape:after {
-  margin: 0 66.2rem;
-  color: #cda1ff;
-  font-size: 1.24rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #ff94a1;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-14 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(296deg);
-            transform: translate3d(0, 0, 0) rotate(296deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(178deg);
+            transform: translate3d(0, 0, 0) rotate(178deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(656deg);
-            transform: translate3d(0, 0, 100%) rotate(656deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(538deg);
+            transform: translate3d(0, 0, 100%) rotate(538deg);
   }
 }
 
 @keyframes shape-14 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(296deg);
-            transform: translate3d(0, 0, 0) rotate(296deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(178deg);
+            transform: translate3d(0, 0, 0) rotate(178deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(656deg);
-            transform: translate3d(0, 0, 100%) rotate(656deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(538deg);
+            transform: translate3d(0, 0, 100%) rotate(538deg);
   }
 }
 
@@ -1030,36 +1155,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-14 58s linear infinite;
-          animation: shape-14 58s linear infinite;
+  -webkit-animation: shape-14 51s linear infinite;
+          animation: shape-14 51s linear infinite;
 }
 
 .shape-container--14 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #ffef96;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 61.2rem;
+  color: #cda1ff;
+  font-size: 0.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-15 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(328deg);
-            transform: translate3d(0, 0, 0) rotate(328deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(253deg);
+            transform: translate3d(0, 0, 0) rotate(253deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(688deg);
-            transform: translate3d(0, 0, 100%) rotate(688deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(613deg);
+            transform: translate3d(0, 0, 100%) rotate(613deg);
   }
 }
 
 @keyframes shape-15 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(328deg);
-            transform: translate3d(0, 0, 0) rotate(328deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(253deg);
+            transform: translate3d(0, 0, 0) rotate(253deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(688deg);
-            transform: translate3d(0, 0, 100%) rotate(688deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(613deg);
+            transform: translate3d(0, 0, 100%) rotate(613deg);
   }
 }
 
@@ -1067,36 +1192,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-15 49s linear infinite;
-          animation: shape-15 49s linear infinite;
+  -webkit-animation: shape-15 50s linear infinite;
+          animation: shape-15 50s linear infinite;
 }
 
 .shape-container--15 .random-shape:after {
   margin: 0 64.2rem;
-  color: #45ffdc;
+  color: #ff94a1;
   font-size: 0.84rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-16 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(75deg);
-            transform: translate3d(0, 0, 0) rotate(75deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(64deg);
+            transform: translate3d(0, 0, 0) rotate(64deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(435deg);
-            transform: translate3d(0, 0, 100%) rotate(435deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(424deg);
+            transform: translate3d(0, 0, 100%) rotate(424deg);
   }
 }
 
 @keyframes shape-16 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(75deg);
-            transform: translate3d(0, 0, 0) rotate(75deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(64deg);
+            transform: translate3d(0, 0, 0) rotate(64deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(435deg);
-            transform: translate3d(0, 0, 100%) rotate(435deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(424deg);
+            transform: translate3d(0, 0, 100%) rotate(424deg);
   }
 }
 
@@ -1104,36 +1229,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-16 41s linear infinite;
-          animation: shape-16 41s linear infinite;
+  -webkit-animation: shape-16 40s linear infinite;
+          animation: shape-16 40s linear infinite;
 }
 
 .shape-container--16 .random-shape:after {
-  margin: 0 69.2rem;
+  margin: 0 64.2rem;
   color: #ffef96;
-  font-size: 1.84rem;
-  content: "";
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-17 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(72deg);
-            transform: translate3d(0, 0, 0) rotate(72deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(244deg);
+            transform: translate3d(0, 0, 0) rotate(244deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(432deg);
-            transform: translate3d(0, 0, 100%) rotate(432deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(604deg);
+            transform: translate3d(0, 0, 100%) rotate(604deg);
   }
 }
 
 @keyframes shape-17 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(72deg);
-            transform: translate3d(0, 0, 0) rotate(72deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(244deg);
+            transform: translate3d(0, 0, 0) rotate(244deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(432deg);
-            transform: translate3d(0, 0, 100%) rotate(432deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(604deg);
+            transform: translate3d(0, 0, 100%) rotate(604deg);
   }
 }
 
@@ -1141,36 +1266,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-17 43s linear infinite;
-          animation: shape-17 43s linear infinite;
+  -webkit-animation: shape-17 50s linear infinite;
+          animation: shape-17 50s linear infinite;
 }
 
 .shape-container--17 .random-shape:after {
-  margin: 0 64.2rem;
-  color: #4800c0;
-  font-size: 0.84rem;
-  content: "";
+  margin: 0 70.2rem;
+  color: #ff94a1;
+  font-size: 2.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-18 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(47deg);
-            transform: translate3d(0, 0, 0) rotate(47deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(10deg);
+            transform: translate3d(0, 0, 0) rotate(10deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(407deg);
-            transform: translate3d(0, 0, 100%) rotate(407deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(370deg);
+            transform: translate3d(0, 0, 100%) rotate(370deg);
   }
 }
 
 @keyframes shape-18 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(47deg);
-            transform: translate3d(0, 0, 0) rotate(47deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(10deg);
+            transform: translate3d(0, 0, 0) rotate(10deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(407deg);
-            transform: translate3d(0, 0, 100%) rotate(407deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(370deg);
+            transform: translate3d(0, 0, 100%) rotate(370deg);
   }
 }
 
@@ -1178,36 +1303,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-18 34s linear infinite;
-          animation: shape-18 34s linear infinite;
+  -webkit-animation: shape-18 43s linear infinite;
+          animation: shape-18 43s linear infinite;
 }
 
 .shape-container--18 .random-shape:after {
-  margin: 0 61.2rem;
+  margin: 0 69.2rem;
   color: #31b4ff;
-  font-size: 0.24rem;
-  content: "";
+  font-size: 1.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-19 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(35deg);
-            transform: translate3d(0, 0, 0) rotate(35deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(195deg);
+            transform: translate3d(0, 0, 0) rotate(195deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(395deg);
-            transform: translate3d(0, 0, 100%) rotate(395deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(555deg);
+            transform: translate3d(0, 0, 100%) rotate(555deg);
   }
 }
 
 @keyframes shape-19 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(35deg);
-            transform: translate3d(0, 0, 0) rotate(35deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(195deg);
+            transform: translate3d(0, 0, 0) rotate(195deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(395deg);
-            transform: translate3d(0, 0, 100%) rotate(395deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(555deg);
+            transform: translate3d(0, 0, 100%) rotate(555deg);
   }
 }
 
@@ -1215,36 +1340,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-19 60s linear infinite;
-          animation: shape-19 60s linear infinite;
+  -webkit-animation: shape-19 35s linear infinite;
+          animation: shape-19 35s linear infinite;
 }
 
 .shape-container--19 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #4800c0;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #45ffdc;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-20 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(31deg);
-            transform: translate3d(0, 0, 0) rotate(31deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(291deg);
+            transform: translate3d(0, 0, 0) rotate(291deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(391deg);
-            transform: translate3d(0, 0, 100%) rotate(391deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(651deg);
+            transform: translate3d(0, 0, 100%) rotate(651deg);
   }
 }
 
 @keyframes shape-20 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(31deg);
-            transform: translate3d(0, 0, 0) rotate(31deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(291deg);
+            transform: translate3d(0, 0, 0) rotate(291deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(391deg);
-            transform: translate3d(0, 0, 100%) rotate(391deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(651deg);
+            transform: translate3d(0, 0, 100%) rotate(651deg);
   }
 }
 
@@ -1257,31 +1382,31 @@ header #burger-btn div {
 }
 
 .shape-container--20 .random-shape:after {
-  margin: 0 66.2rem;
+  margin: 0 63.2rem;
   color: #45ffdc;
-  font-size: 1.24rem;
-  content: "";
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-21 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(130deg);
-            transform: translate3d(0, 0, 0) rotate(130deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(196deg);
+            transform: translate3d(0, 0, 0) rotate(196deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(490deg);
-            transform: translate3d(0, 0, 100%) rotate(490deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(556deg);
+            transform: translate3d(0, 0, 100%) rotate(556deg);
   }
 }
 
 @keyframes shape-21 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(130deg);
-            transform: translate3d(0, 0, 0) rotate(130deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(196deg);
+            transform: translate3d(0, 0, 0) rotate(196deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(490deg);
-            transform: translate3d(0, 0, 100%) rotate(490deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(556deg);
+            transform: translate3d(0, 0, 100%) rotate(556deg);
   }
 }
 
@@ -1289,36 +1414,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-21 51s linear infinite;
-          animation: shape-21 51s linear infinite;
+  -webkit-animation: shape-21 44s linear infinite;
+          animation: shape-21 44s linear infinite;
 }
 
 .shape-container--21 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #ff94a1;
-  font-size: 1.04rem;
+  margin: 0 67.2rem;
+  color: #cda1ff;
+  font-size: 1.44rem;
   content: "";
 }
 
 @-webkit-keyframes shape-22 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(30deg);
-            transform: translate3d(0, 0, 0) rotate(30deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(180deg);
+            transform: translate3d(0, 0, 0) rotate(180deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(390deg);
-            transform: translate3d(0, 0, 100%) rotate(390deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(540deg);
+            transform: translate3d(0, 0, 100%) rotate(540deg);
   }
 }
 
 @keyframes shape-22 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(30deg);
-            transform: translate3d(0, 0, 0) rotate(30deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(180deg);
+            transform: translate3d(0, 0, 0) rotate(180deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(390deg);
-            transform: translate3d(0, 0, 100%) rotate(390deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(540deg);
+            transform: translate3d(0, 0, 100%) rotate(540deg);
   }
 }
 
@@ -1326,36 +1451,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-22 39s linear infinite;
-          animation: shape-22 39s linear infinite;
+  -webkit-animation: shape-22 54s linear infinite;
+          animation: shape-22 54s linear infinite;
 }
 
 .shape-container--22 .random-shape:after {
-  margin: 0 69.2rem;
-  color: #31b4ff;
-  font-size: 1.84rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #ffef96;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-23 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(290deg);
-            transform: translate3d(0, 0, 0) rotate(290deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(330deg);
+            transform: translate3d(0, 0, 0) rotate(330deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(650deg);
-            transform: translate3d(0, 0, 100%) rotate(650deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(690deg);
+            transform: translate3d(0, 0, 100%) rotate(690deg);
   }
 }
 
 @keyframes shape-23 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(290deg);
-            transform: translate3d(0, 0, 0) rotate(290deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(330deg);
+            transform: translate3d(0, 0, 0) rotate(330deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(650deg);
-            transform: translate3d(0, 0, 100%) rotate(650deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(690deg);
+            transform: translate3d(0, 0, 100%) rotate(690deg);
   }
 }
 
@@ -1363,36 +1488,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-23 34s linear infinite;
-          animation: shape-23 34s linear infinite;
+  -webkit-animation: shape-23 50s linear infinite;
+          animation: shape-23 50s linear infinite;
 }
 
 .shape-container--23 .random-shape:after {
-  margin: 0 68.2rem;
-  color: #45ffdc;
-  font-size: 1.64rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #ffef96;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-24 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(308deg);
-            transform: translate3d(0, 0, 0) rotate(308deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(230deg);
+            transform: translate3d(0, 0, 0) rotate(230deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(668deg);
-            transform: translate3d(0, 0, 100%) rotate(668deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(590deg);
+            transform: translate3d(0, 0, 100%) rotate(590deg);
   }
 }
 
 @keyframes shape-24 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(308deg);
-            transform: translate3d(0, 0, 0) rotate(308deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(230deg);
+            transform: translate3d(0, 0, 0) rotate(230deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(668deg);
-            transform: translate3d(0, 0, 100%) rotate(668deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(590deg);
+            transform: translate3d(0, 0, 100%) rotate(590deg);
   }
 }
 
@@ -1400,36 +1525,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-24 38s linear infinite;
-          animation: shape-24 38s linear infinite;
+  -webkit-animation: shape-24 44s linear infinite;
+          animation: shape-24 44s linear infinite;
 }
 
 .shape-container--24 .random-shape:after {
-  margin: 0 70.2rem;
-  color: #4800c0;
-  font-size: 2.04rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #9300c9;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-25 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(22deg);
-            transform: translate3d(0, 0, 0) rotate(22deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(93deg);
+            transform: translate3d(0, 0, 0) rotate(93deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(382deg);
-            transform: translate3d(0, 0, 100%) rotate(382deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(453deg);
+            transform: translate3d(0, 0, 100%) rotate(453deg);
   }
 }
 
 @keyframes shape-25 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(22deg);
-            transform: translate3d(0, 0, 0) rotate(22deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(93deg);
+            transform: translate3d(0, 0, 0) rotate(93deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(382deg);
-            transform: translate3d(0, 0, 100%) rotate(382deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(453deg);
+            transform: translate3d(0, 0, 100%) rotate(453deg);
   }
 }
 
@@ -1437,36 +1562,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-25 55s linear infinite;
-          animation: shape-25 55s linear infinite;
+  -webkit-animation: shape-25 37s linear infinite;
+          animation: shape-25 37s linear infinite;
 }
 
 .shape-container--25 .random-shape:after {
-  margin: 0 61.2rem;
-  color: #ff94a1;
-  font-size: 0.24rem;
-  content: "";
+  margin: 0 65.2rem;
+  color: #cda1ff;
+  font-size: 1.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-26 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(241deg);
-            transform: translate3d(0, 0, 0) rotate(241deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(130deg);
+            transform: translate3d(0, 0, 0) rotate(130deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(601deg);
-            transform: translate3d(0, 0, 100%) rotate(601deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(490deg);
+            transform: translate3d(0, 0, 100%) rotate(490deg);
   }
 }
 
 @keyframes shape-26 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(241deg);
-            transform: translate3d(0, 0, 0) rotate(241deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(130deg);
+            transform: translate3d(0, 0, 0) rotate(130deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(601deg);
-            transform: translate3d(0, 0, 100%) rotate(601deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(490deg);
+            transform: translate3d(0, 0, 100%) rotate(490deg);
   }
 }
 
@@ -1474,36 +1599,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-26 36s linear infinite;
-          animation: shape-26 36s linear infinite;
+  -webkit-animation: shape-26 48s linear infinite;
+          animation: shape-26 48s linear infinite;
 }
 
 .shape-container--26 .random-shape:after {
-  margin: 0 61.2rem;
-  color: #4800c0;
-  font-size: 0.24rem;
-  content: "";
+  margin: 0 65.2rem;
+  color: #45ffdc;
+  font-size: 1.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-27 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(350deg);
-            transform: translate3d(0, 0, 0) rotate(350deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(214deg);
+            transform: translate3d(0, 0, 0) rotate(214deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(710deg);
-            transform: translate3d(0, 0, 100%) rotate(710deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(574deg);
+            transform: translate3d(0, 0, 100%) rotate(574deg);
   }
 }
 
 @keyframes shape-27 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(350deg);
-            transform: translate3d(0, 0, 0) rotate(350deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(214deg);
+            transform: translate3d(0, 0, 0) rotate(214deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(710deg);
-            transform: translate3d(0, 0, 100%) rotate(710deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(574deg);
+            transform: translate3d(0, 0, 100%) rotate(574deg);
   }
 }
 
@@ -1511,36 +1636,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-27 47s linear infinite;
-          animation: shape-27 47s linear infinite;
+  -webkit-animation: shape-27 31s linear infinite;
+          animation: shape-27 31s linear infinite;
 }
 
 .shape-container--27 .random-shape:after {
-  margin: 0 63.2rem;
+  margin: 0 70.2rem;
   color: #9300c9;
-  font-size: 0.64rem;
-  content: "";
+  font-size: 2.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-28 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(308deg);
-            transform: translate3d(0, 0, 0) rotate(308deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(263deg);
+            transform: translate3d(0, 0, 0) rotate(263deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(668deg);
-            transform: translate3d(0, 0, 100%) rotate(668deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(623deg);
+            transform: translate3d(0, 0, 100%) rotate(623deg);
   }
 }
 
 @keyframes shape-28 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(308deg);
-            transform: translate3d(0, 0, 0) rotate(308deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(263deg);
+            transform: translate3d(0, 0, 0) rotate(263deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(668deg);
-            transform: translate3d(0, 0, 100%) rotate(668deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(623deg);
+            transform: translate3d(0, 0, 100%) rotate(623deg);
   }
 }
 
@@ -1548,36 +1673,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-28 57s linear infinite;
-          animation: shape-28 57s linear infinite;
+  -webkit-animation: shape-28 55s linear infinite;
+          animation: shape-28 55s linear infinite;
 }
 
 .shape-container--28 .random-shape:after {
-  margin: 0 66.2rem;
-  color: #31b4ff;
-  font-size: 1.24rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #45ffdc;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-29 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(268deg);
-            transform: translate3d(0, 0, 0) rotate(268deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(331deg);
+            transform: translate3d(0, 0, 0) rotate(331deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(628deg);
-            transform: translate3d(0, 0, 100%) rotate(628deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(691deg);
+            transform: translate3d(0, 0, 100%) rotate(691deg);
   }
 }
 
 @keyframes shape-29 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(268deg);
-            transform: translate3d(0, 0, 0) rotate(268deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(331deg);
+            transform: translate3d(0, 0, 0) rotate(331deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(628deg);
-            transform: translate3d(0, 0, 100%) rotate(628deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(691deg);
+            transform: translate3d(0, 0, 100%) rotate(691deg);
   }
 }
 
@@ -1585,36 +1710,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-29 46s linear infinite;
-          animation: shape-29 46s linear infinite;
+  -webkit-animation: shape-29 34s linear infinite;
+          animation: shape-29 34s linear infinite;
 }
 
 .shape-container--29 .random-shape:after {
-  margin: 0 70.2rem;
-  color: #ffef96;
-  font-size: 2.04rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #cda1ff;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-30 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(350deg);
-            transform: translate3d(0, 0, 0) rotate(350deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(53deg);
+            transform: translate3d(0, 0, 0) rotate(53deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(710deg);
-            transform: translate3d(0, 0, 100%) rotate(710deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(413deg);
+            transform: translate3d(0, 0, 100%) rotate(413deg);
   }
 }
 
 @keyframes shape-30 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(350deg);
-            transform: translate3d(0, 0, 0) rotate(350deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(53deg);
+            transform: translate3d(0, 0, 0) rotate(53deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(710deg);
-            transform: translate3d(0, 0, 100%) rotate(710deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(413deg);
+            transform: translate3d(0, 0, 100%) rotate(413deg);
   }
 }
 
@@ -1622,36 +1747,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-30 50s linear infinite;
-          animation: shape-30 50s linear infinite;
+  -webkit-animation: shape-30 43s linear infinite;
+          animation: shape-30 43s linear infinite;
 }
 
 .shape-container--30 .random-shape:after {
-  margin: 0 68.2rem;
+  margin: 0 69.2rem;
   color: #ff94a1;
-  font-size: 1.64rem;
-  content: "";
+  font-size: 1.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-31 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(43deg);
-            transform: translate3d(0, 0, 0) rotate(43deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(258deg);
+            transform: translate3d(0, 0, 0) rotate(258deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(403deg);
-            transform: translate3d(0, 0, 100%) rotate(403deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(618deg);
+            transform: translate3d(0, 0, 100%) rotate(618deg);
   }
 }
 
 @keyframes shape-31 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(43deg);
-            transform: translate3d(0, 0, 0) rotate(43deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(258deg);
+            transform: translate3d(0, 0, 0) rotate(258deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(403deg);
-            transform: translate3d(0, 0, 100%) rotate(403deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(618deg);
+            transform: translate3d(0, 0, 100%) rotate(618deg);
   }
 }
 
@@ -1659,36 +1784,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-31 34s linear infinite;
-          animation: shape-31 34s linear infinite;
+  -webkit-animation: shape-31 38s linear infinite;
+          animation: shape-31 38s linear infinite;
 }
 
 .shape-container--31 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #ff94a1;
-  font-size: 1.04rem;
+  margin: 0 66.2rem;
+  color: #9300c9;
+  font-size: 1.24rem;
   content: "";
 }
 
 @-webkit-keyframes shape-32 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(4deg);
-            transform: translate3d(0, 0, 0) rotate(4deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(23deg);
+            transform: translate3d(0, 0, 0) rotate(23deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(364deg);
-            transform: translate3d(0, 0, 100%) rotate(364deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(383deg);
+            transform: translate3d(0, 0, 100%) rotate(383deg);
   }
 }
 
 @keyframes shape-32 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(4deg);
-            transform: translate3d(0, 0, 0) rotate(4deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(23deg);
+            transform: translate3d(0, 0, 0) rotate(23deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(364deg);
-            transform: translate3d(0, 0, 100%) rotate(364deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(383deg);
+            transform: translate3d(0, 0, 100%) rotate(383deg);
   }
 }
 
@@ -1696,36 +1821,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-32 41s linear infinite;
-          animation: shape-32 41s linear infinite;
+  -webkit-animation: shape-32 55s linear infinite;
+          animation: shape-32 55s linear infinite;
 }
 
 .shape-container--32 .random-shape:after {
-  margin: 0 61.2rem;
-  color: #cda1ff;
-  font-size: 0.24rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #ffef96;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-33 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(68deg);
-            transform: translate3d(0, 0, 0) rotate(68deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(76deg);
+            transform: translate3d(0, 0, 0) rotate(76deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(428deg);
-            transform: translate3d(0, 0, 100%) rotate(428deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(436deg);
+            transform: translate3d(0, 0, 100%) rotate(436deg);
   }
 }
 
 @keyframes shape-33 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(68deg);
-            transform: translate3d(0, 0, 0) rotate(68deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(76deg);
+            transform: translate3d(0, 0, 0) rotate(76deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(428deg);
-            transform: translate3d(0, 0, 100%) rotate(428deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(436deg);
+            transform: translate3d(0, 0, 100%) rotate(436deg);
   }
 }
 
@@ -1733,36 +1858,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-33 33s linear infinite;
-          animation: shape-33 33s linear infinite;
+  -webkit-animation: shape-33 49s linear infinite;
+          animation: shape-33 49s linear infinite;
 }
 
 .shape-container--33 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #cda1ff;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 69.2rem;
+  color: #ff94a1;
+  font-size: 1.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-34 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(102deg);
-            transform: translate3d(0, 0, 0) rotate(102deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(170deg);
+            transform: translate3d(0, 0, 0) rotate(170deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(462deg);
-            transform: translate3d(0, 0, 100%) rotate(462deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(530deg);
+            transform: translate3d(0, 0, 100%) rotate(530deg);
   }
 }
 
 @keyframes shape-34 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(102deg);
-            transform: translate3d(0, 0, 0) rotate(102deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(170deg);
+            transform: translate3d(0, 0, 0) rotate(170deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(462deg);
-            transform: translate3d(0, 0, 100%) rotate(462deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(530deg);
+            transform: translate3d(0, 0, 100%) rotate(530deg);
   }
 }
 
@@ -1770,36 +1895,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-34 49s linear infinite;
-          animation: shape-34 49s linear infinite;
+  -webkit-animation: shape-34 56s linear infinite;
+          animation: shape-34 56s linear infinite;
 }
 
 .shape-container--34 .random-shape:after {
-  margin: 0 62.2rem;
-  color: #4800c0;
-  font-size: 0.44rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #45ffdc;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-35 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(122deg);
-            transform: translate3d(0, 0, 0) rotate(122deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(264deg);
+            transform: translate3d(0, 0, 0) rotate(264deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(482deg);
-            transform: translate3d(0, 0, 100%) rotate(482deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(624deg);
+            transform: translate3d(0, 0, 100%) rotate(624deg);
   }
 }
 
 @keyframes shape-35 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(122deg);
-            transform: translate3d(0, 0, 0) rotate(122deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(264deg);
+            transform: translate3d(0, 0, 0) rotate(264deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(482deg);
-            transform: translate3d(0, 0, 100%) rotate(482deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(624deg);
+            transform: translate3d(0, 0, 100%) rotate(624deg);
   }
 }
 
@@ -1807,36 +1932,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-35 50s linear infinite;
-          animation: shape-35 50s linear infinite;
+  -webkit-animation: shape-35 43s linear infinite;
+          animation: shape-35 43s linear infinite;
 }
 
 .shape-container--35 .random-shape:after {
-  margin: 0 70.2rem;
-  color: #ff94a1;
-  font-size: 2.04rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #45ffdc;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-36 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(179deg);
-            transform: translate3d(0, 0, 0) rotate(179deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(335deg);
+            transform: translate3d(0, 0, 0) rotate(335deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(539deg);
-            transform: translate3d(0, 0, 100%) rotate(539deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(695deg);
+            transform: translate3d(0, 0, 100%) rotate(695deg);
   }
 }
 
 @keyframes shape-36 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(179deg);
-            transform: translate3d(0, 0, 0) rotate(179deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(335deg);
+            transform: translate3d(0, 0, 0) rotate(335deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(539deg);
-            transform: translate3d(0, 0, 100%) rotate(539deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(695deg);
+            transform: translate3d(0, 0, 100%) rotate(695deg);
   }
 }
 
@@ -1844,36 +1969,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-36 47s linear infinite;
-          animation: shape-36 47s linear infinite;
+  -webkit-animation: shape-36 55s linear infinite;
+          animation: shape-36 55s linear infinite;
 }
 
 .shape-container--36 .random-shape:after {
-  margin: 0 68.2rem;
-  color: #ff94a1;
-  font-size: 1.64rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #31b4ff;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-37 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(86deg);
-            transform: translate3d(0, 0, 0) rotate(86deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(328deg);
+            transform: translate3d(0, 0, 0) rotate(328deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(446deg);
-            transform: translate3d(0, 0, 100%) rotate(446deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(688deg);
+            transform: translate3d(0, 0, 100%) rotate(688deg);
   }
 }
 
 @keyframes shape-37 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(86deg);
-            transform: translate3d(0, 0, 0) rotate(86deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(328deg);
+            transform: translate3d(0, 0, 0) rotate(328deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(446deg);
-            transform: translate3d(0, 0, 100%) rotate(446deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(688deg);
+            transform: translate3d(0, 0, 100%) rotate(688deg);
   }
 }
 
@@ -1881,36 +2006,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-37 37s linear infinite;
-          animation: shape-37 37s linear infinite;
+  -webkit-animation: shape-37 56s linear infinite;
+          animation: shape-37 56s linear infinite;
 }
 
 .shape-container--37 .random-shape:after {
   margin: 0 66.2rem;
-  color: #4800c0;
+  color: #ffef96;
   font-size: 1.24rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-38 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(65deg);
-            transform: translate3d(0, 0, 0) rotate(65deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(280deg);
+            transform: translate3d(0, 0, 0) rotate(280deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(425deg);
-            transform: translate3d(0, 0, 100%) rotate(425deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(640deg);
+            transform: translate3d(0, 0, 100%) rotate(640deg);
   }
 }
 
 @keyframes shape-38 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(65deg);
-            transform: translate3d(0, 0, 0) rotate(65deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(280deg);
+            transform: translate3d(0, 0, 0) rotate(280deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(425deg);
-            transform: translate3d(0, 0, 100%) rotate(425deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(640deg);
+            transform: translate3d(0, 0, 100%) rotate(640deg);
   }
 }
 
@@ -1918,36 +2043,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-38 47s linear infinite;
-          animation: shape-38 47s linear infinite;
+  -webkit-animation: shape-38 38s linear infinite;
+          animation: shape-38 38s linear infinite;
 }
 
 .shape-container--38 .random-shape:after {
   margin: 0 69.2rem;
-  color: #ffef96;
+  color: #ff94a1;
   font-size: 1.84rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-39 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(303deg);
-            transform: translate3d(0, 0, 0) rotate(303deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(154deg);
+            transform: translate3d(0, 0, 0) rotate(154deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(663deg);
-            transform: translate3d(0, 0, 100%) rotate(663deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(514deg);
+            transform: translate3d(0, 0, 100%) rotate(514deg);
   }
 }
 
 @keyframes shape-39 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(303deg);
-            transform: translate3d(0, 0, 0) rotate(303deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(154deg);
+            transform: translate3d(0, 0, 0) rotate(154deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(663deg);
-            transform: translate3d(0, 0, 100%) rotate(663deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(514deg);
+            transform: translate3d(0, 0, 100%) rotate(514deg);
   }
 }
 
@@ -1955,36 +2080,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-39 56s linear infinite;
-          animation: shape-39 56s linear infinite;
+  -webkit-animation: shape-39 58s linear infinite;
+          animation: shape-39 58s linear infinite;
 }
 
 .shape-container--39 .random-shape:after {
-  margin: 0 61.2rem;
-  color: #cda1ff;
-  font-size: 0.24rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #9300c9;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-40 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(154deg);
-            transform: translate3d(0, 0, 0) rotate(154deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(3deg);
+            transform: translate3d(0, 0, 0) rotate(3deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(514deg);
-            transform: translate3d(0, 0, 100%) rotate(514deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(363deg);
+            transform: translate3d(0, 0, 100%) rotate(363deg);
   }
 }
 
 @keyframes shape-40 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(154deg);
-            transform: translate3d(0, 0, 0) rotate(154deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(3deg);
+            transform: translate3d(0, 0, 0) rotate(3deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(514deg);
-            transform: translate3d(0, 0, 100%) rotate(514deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(363deg);
+            transform: translate3d(0, 0, 100%) rotate(363deg);
   }
 }
 
@@ -1992,36 +2117,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-40 40s linear infinite;
-          animation: shape-40 40s linear infinite;
+  -webkit-animation: shape-40 43s linear infinite;
+          animation: shape-40 43s linear infinite;
 }
 
 .shape-container--40 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #ff94a1;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #4800c0;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-41 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(94deg);
-            transform: translate3d(0, 0, 0) rotate(94deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(225deg);
+            transform: translate3d(0, 0, 0) rotate(225deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(454deg);
-            transform: translate3d(0, 0, 100%) rotate(454deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(585deg);
+            transform: translate3d(0, 0, 100%) rotate(585deg);
   }
 }
 
 @keyframes shape-41 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(94deg);
-            transform: translate3d(0, 0, 0) rotate(94deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(225deg);
+            transform: translate3d(0, 0, 0) rotate(225deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(454deg);
-            transform: translate3d(0, 0, 100%) rotate(454deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(585deg);
+            transform: translate3d(0, 0, 100%) rotate(585deg);
   }
 }
 
@@ -2029,36 +2154,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-41 50s linear infinite;
-          animation: shape-41 50s linear infinite;
+  -webkit-animation: shape-41 47s linear infinite;
+          animation: shape-41 47s linear infinite;
 }
 
 .shape-container--41 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #ffef96;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 68.2rem;
+  color: #cda1ff;
+  font-size: 1.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-42 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(178deg);
-            transform: translate3d(0, 0, 0) rotate(178deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(125deg);
+            transform: translate3d(0, 0, 0) rotate(125deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(538deg);
-            transform: translate3d(0, 0, 100%) rotate(538deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(485deg);
+            transform: translate3d(0, 0, 100%) rotate(485deg);
   }
 }
 
 @keyframes shape-42 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(178deg);
-            transform: translate3d(0, 0, 0) rotate(178deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(125deg);
+            transform: translate3d(0, 0, 0) rotate(125deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(538deg);
-            transform: translate3d(0, 0, 100%) rotate(538deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(485deg);
+            transform: translate3d(0, 0, 100%) rotate(485deg);
   }
 }
 
@@ -2066,36 +2191,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-42 54s linear infinite;
-          animation: shape-42 54s linear infinite;
+  -webkit-animation: shape-42 56s linear infinite;
+          animation: shape-42 56s linear infinite;
 }
 
 .shape-container--42 .random-shape:after {
-  margin: 0 68.2rem;
-  color: #ff94a1;
-  font-size: 1.64rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #9300c9;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-43 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(28deg);
-            transform: translate3d(0, 0, 0) rotate(28deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(22deg);
+            transform: translate3d(0, 0, 0) rotate(22deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(388deg);
-            transform: translate3d(0, 0, 100%) rotate(388deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(382deg);
+            transform: translate3d(0, 0, 100%) rotate(382deg);
   }
 }
 
 @keyframes shape-43 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(28deg);
-            transform: translate3d(0, 0, 0) rotate(28deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(22deg);
+            transform: translate3d(0, 0, 0) rotate(22deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(388deg);
-            transform: translate3d(0, 0, 100%) rotate(388deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(382deg);
+            transform: translate3d(0, 0, 100%) rotate(382deg);
   }
 }
 
@@ -2103,36 +2228,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-43 60s linear infinite;
-          animation: shape-43 60s linear infinite;
+  -webkit-animation: shape-43 45s linear infinite;
+          animation: shape-43 45s linear infinite;
 }
 
 .shape-container--43 .random-shape:after {
-  margin: 0 69.2rem;
+  margin: 0 70.2rem;
   color: #45ffdc;
-  font-size: 1.84rem;
-  content: "";
+  font-size: 2.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-44 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(13deg);
-            transform: translate3d(0, 0, 0) rotate(13deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(123deg);
+            transform: translate3d(0, 0, 0) rotate(123deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(373deg);
-            transform: translate3d(0, 0, 100%) rotate(373deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(483deg);
+            transform: translate3d(0, 0, 100%) rotate(483deg);
   }
 }
 
 @keyframes shape-44 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(13deg);
-            transform: translate3d(0, 0, 0) rotate(13deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(123deg);
+            transform: translate3d(0, 0, 0) rotate(123deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(373deg);
-            transform: translate3d(0, 0, 100%) rotate(373deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(483deg);
+            transform: translate3d(0, 0, 100%) rotate(483deg);
   }
 }
 
@@ -2140,36 +2265,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-44 41s linear infinite;
-          animation: shape-44 41s linear infinite;
+  -webkit-animation: shape-44 57s linear infinite;
+          animation: shape-44 57s linear infinite;
 }
 
 .shape-container--44 .random-shape:after {
-  margin: 0 67.2rem;
-  color: #45ffdc;
-  font-size: 1.44rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #4800c0;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-45 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(259deg);
-            transform: translate3d(0, 0, 0) rotate(259deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(9deg);
+            transform: translate3d(0, 0, 0) rotate(9deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(619deg);
-            transform: translate3d(0, 0, 100%) rotate(619deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(369deg);
+            transform: translate3d(0, 0, 100%) rotate(369deg);
   }
 }
 
 @keyframes shape-45 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(259deg);
-            transform: translate3d(0, 0, 0) rotate(259deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(9deg);
+            transform: translate3d(0, 0, 0) rotate(9deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(619deg);
-            transform: translate3d(0, 0, 100%) rotate(619deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(369deg);
+            transform: translate3d(0, 0, 100%) rotate(369deg);
   }
 }
 
@@ -2177,36 +2302,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-45 56s linear infinite;
-          animation: shape-45 56s linear infinite;
+  -webkit-animation: shape-45 45s linear infinite;
+          animation: shape-45 45s linear infinite;
 }
 
 .shape-container--45 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #45ffdc;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 61.2rem;
+  color: #cda1ff;
+  font-size: 0.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-46 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(318deg);
-            transform: translate3d(0, 0, 0) rotate(318deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(319deg);
+            transform: translate3d(0, 0, 0) rotate(319deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(678deg);
-            transform: translate3d(0, 0, 100%) rotate(678deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(679deg);
+            transform: translate3d(0, 0, 100%) rotate(679deg);
   }
 }
 
 @keyframes shape-46 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(318deg);
-            transform: translate3d(0, 0, 0) rotate(318deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(319deg);
+            transform: translate3d(0, 0, 0) rotate(319deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(678deg);
-            transform: translate3d(0, 0, 100%) rotate(678deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(679deg);
+            transform: translate3d(0, 0, 100%) rotate(679deg);
   }
 }
 
@@ -2214,36 +2339,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-46 33s linear infinite;
-          animation: shape-46 33s linear infinite;
+  -webkit-animation: shape-46 60s linear infinite;
+          animation: shape-46 60s linear infinite;
 }
 
 .shape-container--46 .random-shape:after {
-  margin: 0 64.2rem;
-  color: #9300c9;
-  font-size: 0.84rem;
+  margin: 0 62.2rem;
+  color: #ffef96;
+  font-size: 0.44rem;
   content: "";
 }
 
 @-webkit-keyframes shape-47 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(215deg);
-            transform: translate3d(0, 0, 0) rotate(215deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(288deg);
+            transform: translate3d(0, 0, 0) rotate(288deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(575deg);
-            transform: translate3d(0, 0, 100%) rotate(575deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(648deg);
+            transform: translate3d(0, 0, 100%) rotate(648deg);
   }
 }
 
 @keyframes shape-47 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(215deg);
-            transform: translate3d(0, 0, 0) rotate(215deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(288deg);
+            transform: translate3d(0, 0, 0) rotate(288deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(575deg);
-            transform: translate3d(0, 0, 100%) rotate(575deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(648deg);
+            transform: translate3d(0, 0, 100%) rotate(648deg);
   }
 }
 
@@ -2251,36 +2376,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-47 57s linear infinite;
-          animation: shape-47 57s linear infinite;
+  -webkit-animation: shape-47 54s linear infinite;
+          animation: shape-47 54s linear infinite;
 }
 
 .shape-container--47 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #ff94a1;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #ffef96;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-48 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(142deg);
-            transform: translate3d(0, 0, 0) rotate(142deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(315deg);
+            transform: translate3d(0, 0, 0) rotate(315deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(502deg);
-            transform: translate3d(0, 0, 100%) rotate(502deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(675deg);
+            transform: translate3d(0, 0, 100%) rotate(675deg);
   }
 }
 
 @keyframes shape-48 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(142deg);
-            transform: translate3d(0, 0, 0) rotate(142deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(315deg);
+            transform: translate3d(0, 0, 0) rotate(315deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(502deg);
-            transform: translate3d(0, 0, 100%) rotate(502deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(675deg);
+            transform: translate3d(0, 0, 100%) rotate(675deg);
   }
 }
 
@@ -2288,36 +2413,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-48 49s linear infinite;
-          animation: shape-48 49s linear infinite;
+  -webkit-animation: shape-48 34s linear infinite;
+          animation: shape-48 34s linear infinite;
 }
 
 .shape-container--48 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #4800c0;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #ff94a1;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-49 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(141deg);
-            transform: translate3d(0, 0, 0) rotate(141deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(247deg);
+            transform: translate3d(0, 0, 0) rotate(247deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(501deg);
-            transform: translate3d(0, 0, 100%) rotate(501deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(607deg);
+            transform: translate3d(0, 0, 100%) rotate(607deg);
   }
 }
 
 @keyframes shape-49 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(141deg);
-            transform: translate3d(0, 0, 0) rotate(141deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(247deg);
+            transform: translate3d(0, 0, 0) rotate(247deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(501deg);
-            transform: translate3d(0, 0, 100%) rotate(501deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(607deg);
+            transform: translate3d(0, 0, 100%) rotate(607deg);
   }
 }
 
@@ -2325,36 +2450,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-49 44s linear infinite;
-          animation: shape-49 44s linear infinite;
+  -webkit-animation: shape-49 54s linear infinite;
+          animation: shape-49 54s linear infinite;
 }
 
 .shape-container--49 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #ff94a1;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #9300c9;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-50 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(343deg);
-            transform: translate3d(0, 0, 0) rotate(343deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(279deg);
+            transform: translate3d(0, 0, 0) rotate(279deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(703deg);
-            transform: translate3d(0, 0, 100%) rotate(703deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(639deg);
+            transform: translate3d(0, 0, 100%) rotate(639deg);
   }
 }
 
 @keyframes shape-50 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(343deg);
-            transform: translate3d(0, 0, 0) rotate(343deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(279deg);
+            transform: translate3d(0, 0, 0) rotate(279deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(703deg);
-            transform: translate3d(0, 0, 100%) rotate(703deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(639deg);
+            transform: translate3d(0, 0, 100%) rotate(639deg);
   }
 }
 
@@ -2362,36 +2487,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-50 48s linear infinite;
-          animation: shape-50 48s linear infinite;
+  -webkit-animation: shape-50 54s linear infinite;
+          animation: shape-50 54s linear infinite;
 }
 
 .shape-container--50 .random-shape:after {
-  margin: 0 62.2rem;
-  color: #45ffdc;
-  font-size: 0.44rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #ffef96;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-51 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(43deg);
-            transform: translate3d(0, 0, 0) rotate(43deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(8deg);
+            transform: translate3d(0, 0, 0) rotate(8deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(403deg);
-            transform: translate3d(0, 0, 100%) rotate(403deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(368deg);
+            transform: translate3d(0, 0, 100%) rotate(368deg);
   }
 }
 
 @keyframes shape-51 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(43deg);
-            transform: translate3d(0, 0, 0) rotate(43deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(8deg);
+            transform: translate3d(0, 0, 0) rotate(8deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(403deg);
-            transform: translate3d(0, 0, 100%) rotate(403deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(368deg);
+            transform: translate3d(0, 0, 100%) rotate(368deg);
   }
 }
 
@@ -2399,36 +2524,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-51 34s linear infinite;
-          animation: shape-51 34s linear infinite;
+  -webkit-animation: shape-51 46s linear infinite;
+          animation: shape-51 46s linear infinite;
 }
 
 .shape-container--51 .random-shape:after {
-  margin: 0 64.2rem;
+  margin: 0 66.2rem;
   color: #9300c9;
-  font-size: 0.84rem;
-  content: "";
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-52 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(47deg);
-            transform: translate3d(0, 0, 0) rotate(47deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(311deg);
+            transform: translate3d(0, 0, 0) rotate(311deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(407deg);
-            transform: translate3d(0, 0, 100%) rotate(407deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(671deg);
+            transform: translate3d(0, 0, 100%) rotate(671deg);
   }
 }
 
 @keyframes shape-52 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(47deg);
-            transform: translate3d(0, 0, 0) rotate(47deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(311deg);
+            transform: translate3d(0, 0, 0) rotate(311deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(407deg);
-            transform: translate3d(0, 0, 100%) rotate(407deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(671deg);
+            transform: translate3d(0, 0, 100%) rotate(671deg);
   }
 }
 
@@ -2436,36 +2561,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-52 36s linear infinite;
-          animation: shape-52 36s linear infinite;
+  -webkit-animation: shape-52 48s linear infinite;
+          animation: shape-52 48s linear infinite;
 }
 
 .shape-container--52 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #cda1ff;
-  font-size: 0.64rem;
+  margin: 0 69.2rem;
+  color: #45ffdc;
+  font-size: 1.84rem;
   content: "";
 }
 
 @-webkit-keyframes shape-53 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(236deg);
-            transform: translate3d(0, 0, 0) rotate(236deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(201deg);
+            transform: translate3d(0, 0, 0) rotate(201deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(596deg);
-            transform: translate3d(0, 0, 100%) rotate(596deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(561deg);
+            transform: translate3d(0, 0, 100%) rotate(561deg);
   }
 }
 
 @keyframes shape-53 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(236deg);
-            transform: translate3d(0, 0, 0) rotate(236deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(201deg);
+            transform: translate3d(0, 0, 0) rotate(201deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(596deg);
-            transform: translate3d(0, 0, 100%) rotate(596deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(561deg);
+            transform: translate3d(0, 0, 100%) rotate(561deg);
   }
 }
 
@@ -2473,36 +2598,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-53 32s linear infinite;
-          animation: shape-53 32s linear infinite;
+  -webkit-animation: shape-53 34s linear infinite;
+          animation: shape-53 34s linear infinite;
 }
 
 .shape-container--53 .random-shape:after {
   margin: 0 65.2rem;
-  color: #4800c0;
+  color: #9300c9;
   font-size: 1.04rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-54 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(131deg);
-            transform: translate3d(0, 0, 0) rotate(131deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(193deg);
+            transform: translate3d(0, 0, 0) rotate(193deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(491deg);
-            transform: translate3d(0, 0, 100%) rotate(491deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(553deg);
+            transform: translate3d(0, 0, 100%) rotate(553deg);
   }
 }
 
 @keyframes shape-54 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(131deg);
-            transform: translate3d(0, 0, 0) rotate(131deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(193deg);
+            transform: translate3d(0, 0, 0) rotate(193deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(491deg);
-            transform: translate3d(0, 0, 100%) rotate(491deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(553deg);
+            transform: translate3d(0, 0, 100%) rotate(553deg);
   }
 }
 
@@ -2510,36 +2635,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-54 38s linear infinite;
-          animation: shape-54 38s linear infinite;
+  -webkit-animation: shape-54 55s linear infinite;
+          animation: shape-54 55s linear infinite;
 }
 
 .shape-container--54 .random-shape:after {
-  margin: 0 69.2rem;
+  margin: 0 64.2rem;
   color: #cda1ff;
-  font-size: 1.84rem;
-  content: "";
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-55 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(185deg);
-            transform: translate3d(0, 0, 0) rotate(185deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(252deg);
+            transform: translate3d(0, 0, 0) rotate(252deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(545deg);
-            transform: translate3d(0, 0, 100%) rotate(545deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(612deg);
+            transform: translate3d(0, 0, 100%) rotate(612deg);
   }
 }
 
 @keyframes shape-55 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(185deg);
-            transform: translate3d(0, 0, 0) rotate(185deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(252deg);
+            transform: translate3d(0, 0, 0) rotate(252deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(545deg);
-            transform: translate3d(0, 0, 100%) rotate(545deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(612deg);
+            transform: translate3d(0, 0, 100%) rotate(612deg);
   }
 }
 
@@ -2547,36 +2672,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-55 52s linear infinite;
-          animation: shape-55 52s linear infinite;
+  -webkit-animation: shape-55 31s linear infinite;
+          animation: shape-55 31s linear infinite;
 }
 
 .shape-container--55 .random-shape:after {
   margin: 0 62.2rem;
-  color: #ff94a1;
+  color: #31b4ff;
   font-size: 0.44rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-56 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(352deg);
-            transform: translate3d(0, 0, 0) rotate(352deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(90deg);
+            transform: translate3d(0, 0, 0) rotate(90deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(712deg);
-            transform: translate3d(0, 0, 100%) rotate(712deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(450deg);
+            transform: translate3d(0, 0, 100%) rotate(450deg);
   }
 }
 
 @keyframes shape-56 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(352deg);
-            transform: translate3d(0, 0, 0) rotate(352deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(90deg);
+            transform: translate3d(0, 0, 0) rotate(90deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(712deg);
-            transform: translate3d(0, 0, 100%) rotate(712deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(450deg);
+            transform: translate3d(0, 0, 100%) rotate(450deg);
   }
 }
 
@@ -2584,36 +2709,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-56 59s linear infinite;
-          animation: shape-56 59s linear infinite;
+  -webkit-animation: shape-56 31s linear infinite;
+          animation: shape-56 31s linear infinite;
 }
 
 .shape-container--56 .random-shape:after {
-  margin: 0 64.2rem;
+  margin: 0 70.2rem;
   color: #cda1ff;
-  font-size: 0.84rem;
-  content: "";
+  font-size: 2.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-57 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(232deg);
-            transform: translate3d(0, 0, 0) rotate(232deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(49deg);
+            transform: translate3d(0, 0, 0) rotate(49deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(592deg);
-            transform: translate3d(0, 0, 100%) rotate(592deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(409deg);
+            transform: translate3d(0, 0, 100%) rotate(409deg);
   }
 }
 
 @keyframes shape-57 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(232deg);
-            transform: translate3d(0, 0, 0) rotate(232deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(49deg);
+            transform: translate3d(0, 0, 0) rotate(49deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(592deg);
-            transform: translate3d(0, 0, 100%) rotate(592deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(409deg);
+            transform: translate3d(0, 0, 100%) rotate(409deg);
   }
 }
 
@@ -2621,36 +2746,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-57 50s linear infinite;
-          animation: shape-57 50s linear infinite;
+  -webkit-animation: shape-57 49s linear infinite;
+          animation: shape-57 49s linear infinite;
 }
 
 .shape-container--57 .random-shape:after {
-  margin: 0 68.2rem;
-  color: #9300c9;
-  font-size: 1.64rem;
-  content: "";
+  margin: 0 65.2rem;
+  color: #cda1ff;
+  font-size: 1.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-58 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(202deg);
-            transform: translate3d(0, 0, 0) rotate(202deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(356deg);
+            transform: translate3d(0, 0, 0) rotate(356deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(562deg);
-            transform: translate3d(0, 0, 100%) rotate(562deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(716deg);
+            transform: translate3d(0, 0, 100%) rotate(716deg);
   }
 }
 
 @keyframes shape-58 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(202deg);
-            transform: translate3d(0, 0, 0) rotate(202deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(356deg);
+            transform: translate3d(0, 0, 0) rotate(356deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(562deg);
-            transform: translate3d(0, 0, 100%) rotate(562deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(716deg);
+            transform: translate3d(0, 0, 100%) rotate(716deg);
   }
 }
 
@@ -2658,36 +2783,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-58 48s linear infinite;
-          animation: shape-58 48s linear infinite;
+  -webkit-animation: shape-58 55s linear infinite;
+          animation: shape-58 55s linear infinite;
 }
 
 .shape-container--58 .random-shape:after {
-  margin: 0 67.2rem;
-  color: #cda1ff;
-  font-size: 1.44rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #9300c9;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-59 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(51deg);
-            transform: translate3d(0, 0, 0) rotate(51deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(180deg);
+            transform: translate3d(0, 0, 0) rotate(180deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(411deg);
-            transform: translate3d(0, 0, 100%) rotate(411deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(540deg);
+            transform: translate3d(0, 0, 100%) rotate(540deg);
   }
 }
 
 @keyframes shape-59 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(51deg);
-            transform: translate3d(0, 0, 0) rotate(51deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(180deg);
+            transform: translate3d(0, 0, 0) rotate(180deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(411deg);
-            transform: translate3d(0, 0, 100%) rotate(411deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(540deg);
+            transform: translate3d(0, 0, 100%) rotate(540deg);
   }
 }
 
@@ -2695,36 +2820,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-59 33s linear infinite;
-          animation: shape-59 33s linear infinite;
+  -webkit-animation: shape-59 58s linear infinite;
+          animation: shape-59 58s linear infinite;
 }
 
 .shape-container--59 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #31b4ff;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #ffef96;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-60 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(198deg);
-            transform: translate3d(0, 0, 0) rotate(198deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(125deg);
+            transform: translate3d(0, 0, 0) rotate(125deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(558deg);
-            transform: translate3d(0, 0, 100%) rotate(558deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(485deg);
+            transform: translate3d(0, 0, 100%) rotate(485deg);
   }
 }
 
 @keyframes shape-60 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(198deg);
-            transform: translate3d(0, 0, 0) rotate(198deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(125deg);
+            transform: translate3d(0, 0, 0) rotate(125deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(558deg);
-            transform: translate3d(0, 0, 100%) rotate(558deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(485deg);
+            transform: translate3d(0, 0, 100%) rotate(485deg);
   }
 }
 
@@ -2732,36 +2857,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-60 54s linear infinite;
-          animation: shape-60 54s linear infinite;
+  -webkit-animation: shape-60 49s linear infinite;
+          animation: shape-60 49s linear infinite;
 }
 
 .shape-container--60 .random-shape:after {
-  margin: 0 70.2rem;
-  color: #cda1ff;
-  font-size: 2.04rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #31b4ff;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-61 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(143deg);
-            transform: translate3d(0, 0, 0) rotate(143deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(295deg);
+            transform: translate3d(0, 0, 0) rotate(295deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(503deg);
-            transform: translate3d(0, 0, 100%) rotate(503deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(655deg);
+            transform: translate3d(0, 0, 100%) rotate(655deg);
   }
 }
 
 @keyframes shape-61 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(143deg);
-            transform: translate3d(0, 0, 0) rotate(143deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(295deg);
+            transform: translate3d(0, 0, 0) rotate(295deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(503deg);
-            transform: translate3d(0, 0, 100%) rotate(503deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(655deg);
+            transform: translate3d(0, 0, 100%) rotate(655deg);
   }
 }
 
@@ -2769,36 +2894,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-61 55s linear infinite;
-          animation: shape-61 55s linear infinite;
+  -webkit-animation: shape-61 53s linear infinite;
+          animation: shape-61 53s linear infinite;
 }
 
 .shape-container--61 .random-shape:after {
   margin: 0 63.2rem;
-  color: #31b4ff;
+  color: #45ffdc;
   font-size: 0.64rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-62 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(310deg);
-            transform: translate3d(0, 0, 0) rotate(310deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(134deg);
+            transform: translate3d(0, 0, 0) rotate(134deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(670deg);
-            transform: translate3d(0, 0, 100%) rotate(670deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(494deg);
+            transform: translate3d(0, 0, 100%) rotate(494deg);
   }
 }
 
 @keyframes shape-62 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(310deg);
-            transform: translate3d(0, 0, 0) rotate(310deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(134deg);
+            transform: translate3d(0, 0, 0) rotate(134deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(670deg);
-            transform: translate3d(0, 0, 100%) rotate(670deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(494deg);
+            transform: translate3d(0, 0, 100%) rotate(494deg);
   }
 }
 
@@ -2806,36 +2931,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-62 35s linear infinite;
-          animation: shape-62 35s linear infinite;
+  -webkit-animation: shape-62 46s linear infinite;
+          animation: shape-62 46s linear infinite;
 }
 
 .shape-container--62 .random-shape:after {
-  margin: 0 61.2rem;
-  color: #ffef96;
-  font-size: 0.24rem;
+  margin: 0 70.2rem;
+  color: #cda1ff;
+  font-size: 2.04rem;
   content: "";
 }
 
 @-webkit-keyframes shape-63 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(3deg);
-            transform: translate3d(0, 0, 0) rotate(3deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(94deg);
+            transform: translate3d(0, 0, 0) rotate(94deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(363deg);
-            transform: translate3d(0, 0, 100%) rotate(363deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(454deg);
+            transform: translate3d(0, 0, 100%) rotate(454deg);
   }
 }
 
 @keyframes shape-63 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(3deg);
-            transform: translate3d(0, 0, 0) rotate(3deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(94deg);
+            transform: translate3d(0, 0, 0) rotate(94deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(363deg);
-            transform: translate3d(0, 0, 100%) rotate(363deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(454deg);
+            transform: translate3d(0, 0, 100%) rotate(454deg);
   }
 }
 
@@ -2843,36 +2968,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-63 58s linear infinite;
-          animation: shape-63 58s linear infinite;
+  -webkit-animation: shape-63 54s linear infinite;
+          animation: shape-63 54s linear infinite;
 }
 
 .shape-container--63 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #4800c0;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #45ffdc;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-64 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(35deg);
-            transform: translate3d(0, 0, 0) rotate(35deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(2deg);
+            transform: translate3d(0, 0, 0) rotate(2deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(395deg);
-            transform: translate3d(0, 0, 100%) rotate(395deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(362deg);
+            transform: translate3d(0, 0, 100%) rotate(362deg);
   }
 }
 
 @keyframes shape-64 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(35deg);
-            transform: translate3d(0, 0, 0) rotate(35deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(2deg);
+            transform: translate3d(0, 0, 0) rotate(2deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(395deg);
-            transform: translate3d(0, 0, 100%) rotate(395deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(362deg);
+            transform: translate3d(0, 0, 100%) rotate(362deg);
   }
 }
 
@@ -2880,36 +3005,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-64 34s linear infinite;
-          animation: shape-64 34s linear infinite;
+  -webkit-animation: shape-64 58s linear infinite;
+          animation: shape-64 58s linear infinite;
 }
 
 .shape-container--64 .random-shape:after {
-  margin: 0 68.2rem;
-  color: #cda1ff;
-  font-size: 1.64rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #45ffdc;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-65 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(170deg);
-            transform: translate3d(0, 0, 0) rotate(170deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(305deg);
+            transform: translate3d(0, 0, 0) rotate(305deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(530deg);
-            transform: translate3d(0, 0, 100%) rotate(530deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(665deg);
+            transform: translate3d(0, 0, 100%) rotate(665deg);
   }
 }
 
 @keyframes shape-65 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(170deg);
-            transform: translate3d(0, 0, 0) rotate(170deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(305deg);
+            transform: translate3d(0, 0, 0) rotate(305deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(530deg);
-            transform: translate3d(0, 0, 100%) rotate(530deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(665deg);
+            transform: translate3d(0, 0, 100%) rotate(665deg);
   }
 }
 
@@ -2917,36 +3042,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-65 56s linear infinite;
-          animation: shape-65 56s linear infinite;
+  -webkit-animation: shape-65 58s linear infinite;
+          animation: shape-65 58s linear infinite;
 }
 
 .shape-container--65 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #ff94a1;
-  font-size: 0.64rem;
+  margin: 0 66.2rem;
+  color: #9300c9;
+  font-size: 1.24rem;
   content: "";
 }
 
 @-webkit-keyframes shape-66 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(51deg);
-            transform: translate3d(0, 0, 0) rotate(51deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(141deg);
+            transform: translate3d(0, 0, 0) rotate(141deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(411deg);
-            transform: translate3d(0, 0, 100%) rotate(411deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(501deg);
+            transform: translate3d(0, 0, 100%) rotate(501deg);
   }
 }
 
 @keyframes shape-66 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(51deg);
-            transform: translate3d(0, 0, 0) rotate(51deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(141deg);
+            transform: translate3d(0, 0, 0) rotate(141deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(411deg);
-            transform: translate3d(0, 0, 100%) rotate(411deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(501deg);
+            transform: translate3d(0, 0, 100%) rotate(501deg);
   }
 }
 
@@ -2959,31 +3084,31 @@ header #burger-btn div {
 }
 
 .shape-container--66 .random-shape:after {
-  margin: 0 65.2rem;
+  margin: 0 70.2rem;
   color: #31b4ff;
-  font-size: 1.04rem;
-  content: "";
+  font-size: 2.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-67 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(149deg);
-            transform: translate3d(0, 0, 0) rotate(149deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(342deg);
+            transform: translate3d(0, 0, 0) rotate(342deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(509deg);
-            transform: translate3d(0, 0, 100%) rotate(509deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(702deg);
+            transform: translate3d(0, 0, 100%) rotate(702deg);
   }
 }
 
 @keyframes shape-67 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(149deg);
-            transform: translate3d(0, 0, 0) rotate(149deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(342deg);
+            transform: translate3d(0, 0, 0) rotate(342deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(509deg);
-            transform: translate3d(0, 0, 100%) rotate(509deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(702deg);
+            transform: translate3d(0, 0, 100%) rotate(702deg);
   }
 }
 
@@ -2991,36 +3116,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-67 33s linear infinite;
-          animation: shape-67 33s linear infinite;
+  -webkit-animation: shape-67 53s linear infinite;
+          animation: shape-67 53s linear infinite;
 }
 
 .shape-container--67 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #31b4ff;
-  font-size: 0.64rem;
+  margin: 0 62.2rem;
+  color: #ffef96;
+  font-size: 0.44rem;
   content: "";
 }
 
 @-webkit-keyframes shape-68 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(301deg);
-            transform: translate3d(0, 0, 0) rotate(301deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(160deg);
+            transform: translate3d(0, 0, 0) rotate(160deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(661deg);
-            transform: translate3d(0, 0, 100%) rotate(661deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(520deg);
+            transform: translate3d(0, 0, 100%) rotate(520deg);
   }
 }
 
 @keyframes shape-68 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(301deg);
-            transform: translate3d(0, 0, 0) rotate(301deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(160deg);
+            transform: translate3d(0, 0, 0) rotate(160deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(661deg);
-            transform: translate3d(0, 0, 100%) rotate(661deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(520deg);
+            transform: translate3d(0, 0, 100%) rotate(520deg);
   }
 }
 
@@ -3028,36 +3153,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-68 39s linear infinite;
-          animation: shape-68 39s linear infinite;
+  -webkit-animation: shape-68 36s linear infinite;
+          animation: shape-68 36s linear infinite;
 }
 
 .shape-container--68 .random-shape:after {
   margin: 0 64.2rem;
-  color: #31b4ff;
+  color: #ff94a1;
   font-size: 0.84rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-69 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(106deg);
-            transform: translate3d(0, 0, 0) rotate(106deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(257deg);
+            transform: translate3d(0, 0, 0) rotate(257deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(466deg);
-            transform: translate3d(0, 0, 100%) rotate(466deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(617deg);
+            transform: translate3d(0, 0, 100%) rotate(617deg);
   }
 }
 
 @keyframes shape-69 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(106deg);
-            transform: translate3d(0, 0, 0) rotate(106deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(257deg);
+            transform: translate3d(0, 0, 0) rotate(257deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(466deg);
-            transform: translate3d(0, 0, 100%) rotate(466deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(617deg);
+            transform: translate3d(0, 0, 100%) rotate(617deg);
   }
 }
 
@@ -3065,36 +3190,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-69 40s linear infinite;
-          animation: shape-69 40s linear infinite;
+  -webkit-animation: shape-69 60s linear infinite;
+          animation: shape-69 60s linear infinite;
 }
 
 .shape-container--69 .random-shape:after {
-  margin: 0 64.2rem;
-  color: #9300c9;
-  font-size: 0.84rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #45ffdc;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-70 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(287deg);
-            transform: translate3d(0, 0, 0) rotate(287deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(267deg);
+            transform: translate3d(0, 0, 0) rotate(267deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(647deg);
-            transform: translate3d(0, 0, 100%) rotate(647deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(627deg);
+            transform: translate3d(0, 0, 100%) rotate(627deg);
   }
 }
 
 @keyframes shape-70 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(287deg);
-            transform: translate3d(0, 0, 0) rotate(287deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(267deg);
+            transform: translate3d(0, 0, 0) rotate(267deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(647deg);
-            transform: translate3d(0, 0, 100%) rotate(647deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(627deg);
+            transform: translate3d(0, 0, 100%) rotate(627deg);
   }
 }
 
@@ -3102,8 +3227,8 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-70 44s linear infinite;
-          animation: shape-70 44s linear infinite;
+  -webkit-animation: shape-70 54s linear infinite;
+          animation: shape-70 54s linear infinite;
 }
 
 .shape-container--70 .random-shape:after {
@@ -3115,23 +3240,23 @@ header #burger-btn div {
 
 @-webkit-keyframes shape-71 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(171deg);
-            transform: translate3d(0, 0, 0) rotate(171deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(221deg);
+            transform: translate3d(0, 0, 0) rotate(221deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(531deg);
-            transform: translate3d(0, 0, 100%) rotate(531deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(581deg);
+            transform: translate3d(0, 0, 100%) rotate(581deg);
   }
 }
 
 @keyframes shape-71 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(171deg);
-            transform: translate3d(0, 0, 0) rotate(171deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(221deg);
+            transform: translate3d(0, 0, 0) rotate(221deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(531deg);
-            transform: translate3d(0, 0, 100%) rotate(531deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(581deg);
+            transform: translate3d(0, 0, 100%) rotate(581deg);
   }
 }
 
@@ -3139,36 +3264,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-71 44s linear infinite;
-          animation: shape-71 44s linear infinite;
+  -webkit-animation: shape-71 38s linear infinite;
+          animation: shape-71 38s linear infinite;
 }
 
 .shape-container--71 .random-shape:after {
-  margin: 0 67.2rem;
-  color: #45ffdc;
-  font-size: 1.44rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #ffef96;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-72 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(244deg);
-            transform: translate3d(0, 0, 0) rotate(244deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(21deg);
+            transform: translate3d(0, 0, 0) rotate(21deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(604deg);
-            transform: translate3d(0, 0, 100%) rotate(604deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(381deg);
+            transform: translate3d(0, 0, 100%) rotate(381deg);
   }
 }
 
 @keyframes shape-72 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(244deg);
-            transform: translate3d(0, 0, 0) rotate(244deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(21deg);
+            transform: translate3d(0, 0, 0) rotate(21deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(604deg);
-            transform: translate3d(0, 0, 100%) rotate(604deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(381deg);
+            transform: translate3d(0, 0, 100%) rotate(381deg);
   }
 }
 
@@ -3176,36 +3301,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-72 54s linear infinite;
-          animation: shape-72 54s linear infinite;
+  -webkit-animation: shape-72 36s linear infinite;
+          animation: shape-72 36s linear infinite;
 }
 
 .shape-container--72 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #cda1ff;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #ff94a1;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-73 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(88deg);
-            transform: translate3d(0, 0, 0) rotate(88deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(38deg);
+            transform: translate3d(0, 0, 0) rotate(38deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(448deg);
-            transform: translate3d(0, 0, 100%) rotate(448deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(398deg);
+            transform: translate3d(0, 0, 100%) rotate(398deg);
   }
 }
 
 @keyframes shape-73 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(88deg);
-            transform: translate3d(0, 0, 0) rotate(88deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(38deg);
+            transform: translate3d(0, 0, 0) rotate(38deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(448deg);
-            transform: translate3d(0, 0, 100%) rotate(448deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(398deg);
+            transform: translate3d(0, 0, 100%) rotate(398deg);
   }
 }
 
@@ -3213,36 +3338,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-73 43s linear infinite;
-          animation: shape-73 43s linear infinite;
+  -webkit-animation: shape-73 60s linear infinite;
+          animation: shape-73 60s linear infinite;
 }
 
 .shape-container--73 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #9300c9;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #ff94a1;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-74 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(329deg);
-            transform: translate3d(0, 0, 0) rotate(329deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(319deg);
+            transform: translate3d(0, 0, 0) rotate(319deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(689deg);
-            transform: translate3d(0, 0, 100%) rotate(689deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(679deg);
+            transform: translate3d(0, 0, 100%) rotate(679deg);
   }
 }
 
 @keyframes shape-74 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(329deg);
-            transform: translate3d(0, 0, 0) rotate(329deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(319deg);
+            transform: translate3d(0, 0, 0) rotate(319deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(689deg);
-            transform: translate3d(0, 0, 100%) rotate(689deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(679deg);
+            transform: translate3d(0, 0, 100%) rotate(679deg);
   }
 }
 
@@ -3250,36 +3375,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-74 39s linear infinite;
-          animation: shape-74 39s linear infinite;
+  -webkit-animation: shape-74 54s linear infinite;
+          animation: shape-74 54s linear infinite;
 }
 
 .shape-container--74 .random-shape:after {
   margin: 0 63.2rem;
-  color: #cda1ff;
+  color: #4800c0;
   font-size: 0.64rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-75 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(336deg);
-            transform: translate3d(0, 0, 0) rotate(336deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(21deg);
+            transform: translate3d(0, 0, 0) rotate(21deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(696deg);
-            transform: translate3d(0, 0, 100%) rotate(696deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(381deg);
+            transform: translate3d(0, 0, 100%) rotate(381deg);
   }
 }
 
 @keyframes shape-75 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(336deg);
-            transform: translate3d(0, 0, 0) rotate(336deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(21deg);
+            transform: translate3d(0, 0, 0) rotate(21deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(696deg);
-            transform: translate3d(0, 0, 100%) rotate(696deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(381deg);
+            transform: translate3d(0, 0, 100%) rotate(381deg);
   }
 }
 
@@ -3287,36 +3412,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-75 58s linear infinite;
-          animation: shape-75 58s linear infinite;
+  -webkit-animation: shape-75 49s linear infinite;
+          animation: shape-75 49s linear infinite;
 }
 
 .shape-container--75 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #31b4ff;
-  font-size: 0.64rem;
+  margin: 0 68.2rem;
+  color: #ffef96;
+  font-size: 1.64rem;
   content: "";
 }
 
 @-webkit-keyframes shape-76 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(153deg);
-            transform: translate3d(0, 0, 0) rotate(153deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(348deg);
+            transform: translate3d(0, 0, 0) rotate(348deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(513deg);
-            transform: translate3d(0, 0, 100%) rotate(513deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(708deg);
+            transform: translate3d(0, 0, 100%) rotate(708deg);
   }
 }
 
 @keyframes shape-76 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(153deg);
-            transform: translate3d(0, 0, 0) rotate(153deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(348deg);
+            transform: translate3d(0, 0, 0) rotate(348deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(513deg);
-            transform: translate3d(0, 0, 100%) rotate(513deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(708deg);
+            transform: translate3d(0, 0, 100%) rotate(708deg);
   }
 }
 
@@ -3324,36 +3449,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-76 55s linear infinite;
-          animation: shape-76 55s linear infinite;
+  -webkit-animation: shape-76 33s linear infinite;
+          animation: shape-76 33s linear infinite;
 }
 
 .shape-container--76 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #9300c9;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 68.2rem;
+  color: #ff94a1;
+  font-size: 1.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-77 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(335deg);
-            transform: translate3d(0, 0, 0) rotate(335deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(197deg);
+            transform: translate3d(0, 0, 0) rotate(197deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(695deg);
-            transform: translate3d(0, 0, 100%) rotate(695deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(557deg);
+            transform: translate3d(0, 0, 100%) rotate(557deg);
   }
 }
 
 @keyframes shape-77 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(335deg);
-            transform: translate3d(0, 0, 0) rotate(335deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(197deg);
+            transform: translate3d(0, 0, 0) rotate(197deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(695deg);
-            transform: translate3d(0, 0, 100%) rotate(695deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(557deg);
+            transform: translate3d(0, 0, 100%) rotate(557deg);
   }
 }
 
@@ -3361,36 +3486,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-77 33s linear infinite;
-          animation: shape-77 33s linear infinite;
+  -webkit-animation: shape-77 37s linear infinite;
+          animation: shape-77 37s linear infinite;
 }
 
 .shape-container--77 .random-shape:after {
-  margin: 0 66.2rem;
-  color: #ff94a1;
-  font-size: 1.24rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #ffef96;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-78 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(173deg);
-            transform: translate3d(0, 0, 0) rotate(173deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(204deg);
+            transform: translate3d(0, 0, 0) rotate(204deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(533deg);
-            transform: translate3d(0, 0, 100%) rotate(533deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(564deg);
+            transform: translate3d(0, 0, 100%) rotate(564deg);
   }
 }
 
 @keyframes shape-78 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(173deg);
-            transform: translate3d(0, 0, 0) rotate(173deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(204deg);
+            transform: translate3d(0, 0, 0) rotate(204deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(533deg);
-            transform: translate3d(0, 0, 100%) rotate(533deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(564deg);
+            transform: translate3d(0, 0, 100%) rotate(564deg);
   }
 }
 
@@ -3398,36 +3523,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-78 32s linear infinite;
-          animation: shape-78 32s linear infinite;
+  -webkit-animation: shape-78 50s linear infinite;
+          animation: shape-78 50s linear infinite;
 }
 
 .shape-container--78 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #ff94a1;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #4800c0;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-79 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(39deg);
-            transform: translate3d(0, 0, 0) rotate(39deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(324deg);
+            transform: translate3d(0, 0, 0) rotate(324deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(399deg);
-            transform: translate3d(0, 0, 100%) rotate(399deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(684deg);
+            transform: translate3d(0, 0, 100%) rotate(684deg);
   }
 }
 
 @keyframes shape-79 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(39deg);
-            transform: translate3d(0, 0, 0) rotate(39deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(324deg);
+            transform: translate3d(0, 0, 0) rotate(324deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(399deg);
-            transform: translate3d(0, 0, 100%) rotate(399deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(684deg);
+            transform: translate3d(0, 0, 100%) rotate(684deg);
   }
 }
 
@@ -3435,36 +3560,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-79 46s linear infinite;
-          animation: shape-79 46s linear infinite;
+  -webkit-animation: shape-79 54s linear infinite;
+          animation: shape-79 54s linear infinite;
 }
 
 .shape-container--79 .random-shape:after {
-  margin: 0 69.2rem;
-  color: #45ffdc;
-  font-size: 1.84rem;
-  content: "";
+  margin: 0 61.2rem;
+  color: #ff94a1;
+  font-size: 0.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-80 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(138deg);
-            transform: translate3d(0, 0, 0) rotate(138deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(307deg);
+            transform: translate3d(0, 0, 0) rotate(307deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(498deg);
-            transform: translate3d(0, 0, 100%) rotate(498deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(667deg);
+            transform: translate3d(0, 0, 100%) rotate(667deg);
   }
 }
 
 @keyframes shape-80 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(138deg);
-            transform: translate3d(0, 0, 0) rotate(138deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(307deg);
+            transform: translate3d(0, 0, 0) rotate(307deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(498deg);
-            transform: translate3d(0, 0, 100%) rotate(498deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(667deg);
+            transform: translate3d(0, 0, 100%) rotate(667deg);
   }
 }
 
@@ -3472,36 +3597,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-80 57s linear infinite;
-          animation: shape-80 57s linear infinite;
+  -webkit-animation: shape-80 36s linear infinite;
+          animation: shape-80 36s linear infinite;
 }
 
 .shape-container--80 .random-shape:after {
-  margin: 0 64.2rem;
-  color: #ffef96;
-  font-size: 0.84rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #45ffdc;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-81 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(87deg);
-            transform: translate3d(0, 0, 0) rotate(87deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(166deg);
+            transform: translate3d(0, 0, 0) rotate(166deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(447deg);
-            transform: translate3d(0, 0, 100%) rotate(447deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(526deg);
+            transform: translate3d(0, 0, 100%) rotate(526deg);
   }
 }
 
 @keyframes shape-81 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(87deg);
-            transform: translate3d(0, 0, 0) rotate(87deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(166deg);
+            transform: translate3d(0, 0, 0) rotate(166deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(447deg);
-            transform: translate3d(0, 0, 100%) rotate(447deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(526deg);
+            transform: translate3d(0, 0, 100%) rotate(526deg);
   }
 }
 
@@ -3509,36 +3634,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-81 44s linear infinite;
-          animation: shape-81 44s linear infinite;
+  -webkit-animation: shape-81 54s linear infinite;
+          animation: shape-81 54s linear infinite;
 }
 
 .shape-container--81 .random-shape:after {
-  margin: 0 61.2rem;
-  color: #9300c9;
-  font-size: 0.24rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #cda1ff;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-82 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(54deg);
-            transform: translate3d(0, 0, 0) rotate(54deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(343deg);
+            transform: translate3d(0, 0, 0) rotate(343deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(414deg);
-            transform: translate3d(0, 0, 100%) rotate(414deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(703deg);
+            transform: translate3d(0, 0, 100%) rotate(703deg);
   }
 }
 
 @keyframes shape-82 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(54deg);
-            transform: translate3d(0, 0, 0) rotate(54deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(343deg);
+            transform: translate3d(0, 0, 0) rotate(343deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(414deg);
-            transform: translate3d(0, 0, 100%) rotate(414deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(703deg);
+            transform: translate3d(0, 0, 100%) rotate(703deg);
   }
 }
 
@@ -3546,36 +3671,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-82 40s linear infinite;
-          animation: shape-82 40s linear infinite;
+  -webkit-animation: shape-82 51s linear infinite;
+          animation: shape-82 51s linear infinite;
 }
 
 .shape-container--82 .random-shape:after {
-  margin: 0 67.2rem;
-  color: #ff94a1;
-  font-size: 1.44rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #45ffdc;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-83 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(136deg);
-            transform: translate3d(0, 0, 0) rotate(136deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(188deg);
+            transform: translate3d(0, 0, 0) rotate(188deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(496deg);
-            transform: translate3d(0, 0, 100%) rotate(496deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(548deg);
+            transform: translate3d(0, 0, 100%) rotate(548deg);
   }
 }
 
 @keyframes shape-83 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(136deg);
-            transform: translate3d(0, 0, 0) rotate(136deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(188deg);
+            transform: translate3d(0, 0, 0) rotate(188deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(496deg);
-            transform: translate3d(0, 0, 100%) rotate(496deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(548deg);
+            transform: translate3d(0, 0, 100%) rotate(548deg);
   }
 }
 
@@ -3583,36 +3708,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-83 42s linear infinite;
-          animation: shape-83 42s linear infinite;
+  -webkit-animation: shape-83 31s linear infinite;
+          animation: shape-83 31s linear infinite;
 }
 
 .shape-container--83 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #ff94a1;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #cda1ff;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-84 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(153deg);
-            transform: translate3d(0, 0, 0) rotate(153deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(222deg);
+            transform: translate3d(0, 0, 0) rotate(222deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(513deg);
-            transform: translate3d(0, 0, 100%) rotate(513deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(582deg);
+            transform: translate3d(0, 0, 100%) rotate(582deg);
   }
 }
 
 @keyframes shape-84 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(153deg);
-            transform: translate3d(0, 0, 0) rotate(153deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(222deg);
+            transform: translate3d(0, 0, 0) rotate(222deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(513deg);
-            transform: translate3d(0, 0, 100%) rotate(513deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(582deg);
+            transform: translate3d(0, 0, 100%) rotate(582deg);
   }
 }
 
@@ -3620,36 +3745,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-84 54s linear infinite;
-          animation: shape-84 54s linear infinite;
+  -webkit-animation: shape-84 50s linear infinite;
+          animation: shape-84 50s linear infinite;
 }
 
 .shape-container--84 .random-shape:after {
-  margin: 0 62.2rem;
-  color: #cda1ff;
-  font-size: 0.44rem;
-  content: "";
+  margin: 0 66.2rem;
+  color: #31b4ff;
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-85 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(19deg);
-            transform: translate3d(0, 0, 0) rotate(19deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(174deg);
+            transform: translate3d(0, 0, 0) rotate(174deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(379deg);
-            transform: translate3d(0, 0, 100%) rotate(379deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(534deg);
+            transform: translate3d(0, 0, 100%) rotate(534deg);
   }
 }
 
 @keyframes shape-85 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(19deg);
-            transform: translate3d(0, 0, 0) rotate(19deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(174deg);
+            transform: translate3d(0, 0, 0) rotate(174deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(379deg);
-            transform: translate3d(0, 0, 100%) rotate(379deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(534deg);
+            transform: translate3d(0, 0, 100%) rotate(534deg);
   }
 }
 
@@ -3657,36 +3782,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-85 53s linear infinite;
-          animation: shape-85 53s linear infinite;
+  -webkit-animation: shape-85 46s linear infinite;
+          animation: shape-85 46s linear infinite;
 }
 
 .shape-container--85 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #9300c9;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 62.2rem;
+  color: #4800c0;
+  font-size: 0.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-86 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(55deg);
-            transform: translate3d(0, 0, 0) rotate(55deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(89deg);
+            transform: translate3d(0, 0, 0) rotate(89deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(415deg);
-            transform: translate3d(0, 0, 100%) rotate(415deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(449deg);
+            transform: translate3d(0, 0, 100%) rotate(449deg);
   }
 }
 
 @keyframes shape-86 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(55deg);
-            transform: translate3d(0, 0, 0) rotate(55deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(89deg);
+            transform: translate3d(0, 0, 0) rotate(89deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(415deg);
-            transform: translate3d(0, 0, 100%) rotate(415deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(449deg);
+            transform: translate3d(0, 0, 100%) rotate(449deg);
   }
 }
 
@@ -3694,36 +3819,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-86 36s linear infinite;
-          animation: shape-86 36s linear infinite;
+  -webkit-animation: shape-86 33s linear infinite;
+          animation: shape-86 33s linear infinite;
 }
 
 .shape-container--86 .random-shape:after {
-  margin: 0 70.2rem;
-  color: #ffef96;
-  font-size: 2.04rem;
-  content: "";
+  margin: 0 65.2rem;
+  color: #9300c9;
+  font-size: 1.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-87 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(353deg);
-            transform: translate3d(0, 0, 0) rotate(353deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(89deg);
+            transform: translate3d(0, 0, 0) rotate(89deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(713deg);
-            transform: translate3d(0, 0, 100%) rotate(713deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(449deg);
+            transform: translate3d(0, 0, 100%) rotate(449deg);
   }
 }
 
 @keyframes shape-87 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(353deg);
-            transform: translate3d(0, 0, 0) rotate(353deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(89deg);
+            transform: translate3d(0, 0, 0) rotate(89deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(713deg);
-            transform: translate3d(0, 0, 100%) rotate(713deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(449deg);
+            transform: translate3d(0, 0, 100%) rotate(449deg);
   }
 }
 
@@ -3731,36 +3856,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-87 37s linear infinite;
-          animation: shape-87 37s linear infinite;
+  -webkit-animation: shape-87 47s linear infinite;
+          animation: shape-87 47s linear infinite;
 }
 
 .shape-container--87 .random-shape:after {
-  margin: 0 66.2rem;
-  color: #cda1ff;
-  font-size: 1.24rem;
+  margin: 0 70.2rem;
+  color: #45ffdc;
+  font-size: 2.04rem;
   content: "";
 }
 
 @-webkit-keyframes shape-88 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(306deg);
-            transform: translate3d(0, 0, 0) rotate(306deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(142deg);
+            transform: translate3d(0, 0, 0) rotate(142deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(666deg);
-            transform: translate3d(0, 0, 100%) rotate(666deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(502deg);
+            transform: translate3d(0, 0, 100%) rotate(502deg);
   }
 }
 
 @keyframes shape-88 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(306deg);
-            transform: translate3d(0, 0, 0) rotate(306deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(142deg);
+            transform: translate3d(0, 0, 0) rotate(142deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(666deg);
-            transform: translate3d(0, 0, 100%) rotate(666deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(502deg);
+            transform: translate3d(0, 0, 100%) rotate(502deg);
   }
 }
 
@@ -3768,36 +3893,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-88 43s linear infinite;
-          animation: shape-88 43s linear infinite;
+  -webkit-animation: shape-88 48s linear infinite;
+          animation: shape-88 48s linear infinite;
 }
 
 .shape-container--88 .random-shape:after {
-  margin: 0 65.2rem;
+  margin: 0 66.2rem;
   color: #cda1ff;
-  font-size: 1.04rem;
-  content: "";
+  font-size: 1.24rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-89 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(219deg);
-            transform: translate3d(0, 0, 0) rotate(219deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(7deg);
+            transform: translate3d(0, 0, 0) rotate(7deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(579deg);
-            transform: translate3d(0, 0, 100%) rotate(579deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(367deg);
+            transform: translate3d(0, 0, 100%) rotate(367deg);
   }
 }
 
 @keyframes shape-89 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(219deg);
-            transform: translate3d(0, 0, 0) rotate(219deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(7deg);
+            transform: translate3d(0, 0, 0) rotate(7deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(579deg);
-            transform: translate3d(0, 0, 100%) rotate(579deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(367deg);
+            transform: translate3d(0, 0, 100%) rotate(367deg);
   }
 }
 
@@ -3805,36 +3930,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-89 52s linear infinite;
-          animation: shape-89 52s linear infinite;
+  -webkit-animation: shape-89 42s linear infinite;
+          animation: shape-89 42s linear infinite;
 }
 
 .shape-container--89 .random-shape:after {
-  margin: 0 69.2rem;
-  color: #31b4ff;
-  font-size: 1.84rem;
-  content: "";
+  margin: 0 65.2rem;
+  color: #cda1ff;
+  font-size: 1.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-90 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(156deg);
-            transform: translate3d(0, 0, 0) rotate(156deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(6deg);
+            transform: translate3d(0, 0, 0) rotate(6deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(516deg);
-            transform: translate3d(0, 0, 100%) rotate(516deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(366deg);
+            transform: translate3d(0, 0, 100%) rotate(366deg);
   }
 }
 
 @keyframes shape-90 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(156deg);
-            transform: translate3d(0, 0, 0) rotate(156deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(6deg);
+            transform: translate3d(0, 0, 0) rotate(6deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(516deg);
-            transform: translate3d(0, 0, 100%) rotate(516deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(366deg);
+            transform: translate3d(0, 0, 100%) rotate(366deg);
   }
 }
 
@@ -3842,36 +3967,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-90 40s linear infinite;
-          animation: shape-90 40s linear infinite;
+  -webkit-animation: shape-90 47s linear infinite;
+          animation: shape-90 47s linear infinite;
 }
 
 .shape-container--90 .random-shape:after {
-  margin: 0 61.2rem;
-  color: #ffef96;
-  font-size: 0.24rem;
-  content: "";
+  margin: 0 63.2rem;
+  color: #cda1ff;
+  font-size: 0.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-91 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(93deg);
-            transform: translate3d(0, 0, 0) rotate(93deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(37deg);
+            transform: translate3d(0, 0, 0) rotate(37deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(453deg);
-            transform: translate3d(0, 0, 100%) rotate(453deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(397deg);
+            transform: translate3d(0, 0, 100%) rotate(397deg);
   }
 }
 
 @keyframes shape-91 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(93deg);
-            transform: translate3d(0, 0, 0) rotate(93deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(37deg);
+            transform: translate3d(0, 0, 0) rotate(37deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(453deg);
-            transform: translate3d(0, 0, 100%) rotate(453deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(397deg);
+            transform: translate3d(0, 0, 100%) rotate(397deg);
   }
 }
 
@@ -3879,36 +4004,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-91 38s linear infinite;
-          animation: shape-91 38s linear infinite;
+  -webkit-animation: shape-91 35s linear infinite;
+          animation: shape-91 35s linear infinite;
 }
 
 .shape-container--91 .random-shape:after {
-  margin: 0 65.2rem;
-  color: #9300c9;
-  font-size: 1.04rem;
-  content: "";
+  margin: 0 64.2rem;
+  color: #cda1ff;
+  font-size: 0.84rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-92 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(174deg);
-            transform: translate3d(0, 0, 0) rotate(174deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(70deg);
+            transform: translate3d(0, 0, 0) rotate(70deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(534deg);
-            transform: translate3d(0, 0, 100%) rotate(534deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(430deg);
+            transform: translate3d(0, 0, 100%) rotate(430deg);
   }
 }
 
 @keyframes shape-92 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(174deg);
-            transform: translate3d(0, 0, 0) rotate(174deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(70deg);
+            transform: translate3d(0, 0, 0) rotate(70deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(534deg);
-            transform: translate3d(0, 0, 100%) rotate(534deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(430deg);
+            transform: translate3d(0, 0, 100%) rotate(430deg);
   }
 }
 
@@ -3916,36 +4041,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-92 40s linear infinite;
-          animation: shape-92 40s linear infinite;
+  -webkit-animation: shape-92 38s linear infinite;
+          animation: shape-92 38s linear infinite;
 }
 
 .shape-container--92 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #31b4ff;
-  font-size: 0.64rem;
+  margin: 0 70.2rem;
+  color: #9300c9;
+  font-size: 2.04rem;
   content: "";
 }
 
 @-webkit-keyframes shape-93 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(290deg);
-            transform: translate3d(0, 0, 0) rotate(290deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(343deg);
+            transform: translate3d(0, 0, 0) rotate(343deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(650deg);
-            transform: translate3d(0, 0, 100%) rotate(650deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(703deg);
+            transform: translate3d(0, 0, 100%) rotate(703deg);
   }
 }
 
 @keyframes shape-93 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(290deg);
-            transform: translate3d(0, 0, 0) rotate(290deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(343deg);
+            transform: translate3d(0, 0, 0) rotate(343deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(650deg);
-            transform: translate3d(0, 0, 100%) rotate(650deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(703deg);
+            transform: translate3d(0, 0, 100%) rotate(703deg);
   }
 }
 
@@ -3953,36 +4078,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-93 33s linear infinite;
-          animation: shape-93 33s linear infinite;
+  -webkit-animation: shape-93 56s linear infinite;
+          animation: shape-93 56s linear infinite;
 }
 
 .shape-container--93 .random-shape:after {
   margin: 0 62.2rem;
-  color: #31b4ff;
+  color: #ffef96;
   font-size: 0.44rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-94 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(140deg);
-            transform: translate3d(0, 0, 0) rotate(140deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(249deg);
+            transform: translate3d(0, 0, 0) rotate(249deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(500deg);
-            transform: translate3d(0, 0, 100%) rotate(500deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(609deg);
+            transform: translate3d(0, 0, 100%) rotate(609deg);
   }
 }
 
 @keyframes shape-94 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(140deg);
-            transform: translate3d(0, 0, 0) rotate(140deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(249deg);
+            transform: translate3d(0, 0, 0) rotate(249deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(500deg);
-            transform: translate3d(0, 0, 100%) rotate(500deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(609deg);
+            transform: translate3d(0, 0, 100%) rotate(609deg);
   }
 }
 
@@ -3990,36 +4115,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-94 42s linear infinite;
-          animation: shape-94 42s linear infinite;
+  -webkit-animation: shape-94 59s linear infinite;
+          animation: shape-94 59s linear infinite;
 }
 
 .shape-container--94 .random-shape:after {
-  margin: 0 64.2rem;
-  color: #ffef96;
-  font-size: 0.84rem;
-  content: "";
+  margin: 0 68.2rem;
+  color: #31b4ff;
+  font-size: 1.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-95 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(312deg);
-            transform: translate3d(0, 0, 0) rotate(312deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(285deg);
+            transform: translate3d(0, 0, 0) rotate(285deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(672deg);
-            transform: translate3d(0, 0, 100%) rotate(672deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(645deg);
+            transform: translate3d(0, 0, 100%) rotate(645deg);
   }
 }
 
 @keyframes shape-95 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(312deg);
-            transform: translate3d(0, 0, 0) rotate(312deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(285deg);
+            transform: translate3d(0, 0, 0) rotate(285deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(672deg);
-            transform: translate3d(0, 0, 100%) rotate(672deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(645deg);
+            transform: translate3d(0, 0, 100%) rotate(645deg);
   }
 }
 
@@ -4027,36 +4152,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-95 40s linear infinite;
-          animation: shape-95 40s linear infinite;
+  -webkit-animation: shape-95 55s linear infinite;
+          animation: shape-95 55s linear infinite;
 }
 
 .shape-container--95 .random-shape:after {
-  margin: 0 69.2rem;
-  color: #9300c9;
-  font-size: 1.84rem;
-  content: "";
+  margin: 0 67.2rem;
+  color: #31b4ff;
+  font-size: 1.44rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-96 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(257deg);
-            transform: translate3d(0, 0, 0) rotate(257deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(170deg);
+            transform: translate3d(0, 0, 0) rotate(170deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(617deg);
-            transform: translate3d(0, 0, 100%) rotate(617deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(530deg);
+            transform: translate3d(0, 0, 100%) rotate(530deg);
   }
 }
 
 @keyframes shape-96 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(257deg);
-            transform: translate3d(0, 0, 0) rotate(257deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(170deg);
+            transform: translate3d(0, 0, 0) rotate(170deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(617deg);
-            transform: translate3d(0, 0, 100%) rotate(617deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(530deg);
+            transform: translate3d(0, 0, 100%) rotate(530deg);
   }
 }
 
@@ -4064,36 +4189,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-96 38s linear infinite;
-          animation: shape-96 38s linear infinite;
+  -webkit-animation: shape-96 44s linear infinite;
+          animation: shape-96 44s linear infinite;
 }
 
 .shape-container--96 .random-shape:after {
-  margin: 0 69.2rem;
-  color: #cda1ff;
-  font-size: 1.84rem;
-  content: "";
+  margin: 0 68.2rem;
+  color: #4800c0;
+  font-size: 1.64rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-97 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(143deg);
-            transform: translate3d(0, 0, 0) rotate(143deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(129deg);
+            transform: translate3d(0, 0, 0) rotate(129deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(503deg);
-            transform: translate3d(0, 0, 100%) rotate(503deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(489deg);
+            transform: translate3d(0, 0, 100%) rotate(489deg);
   }
 }
 
 @keyframes shape-97 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(143deg);
-            transform: translate3d(0, 0, 0) rotate(143deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(129deg);
+            transform: translate3d(0, 0, 0) rotate(129deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(503deg);
-            transform: translate3d(0, 0, 100%) rotate(503deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(489deg);
+            transform: translate3d(0, 0, 100%) rotate(489deg);
   }
 }
 
@@ -4101,36 +4226,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-97 47s linear infinite;
-          animation: shape-97 47s linear infinite;
+  -webkit-animation: shape-97 44s linear infinite;
+          animation: shape-97 44s linear infinite;
 }
 
 .shape-container--97 .random-shape:after {
   margin: 0 67.2rem;
-  color: #9300c9;
+  color: #45ffdc;
   font-size: 1.44rem;
-  content: "";
+  content: "";
 }
 
 @-webkit-keyframes shape-98 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(168deg);
-            transform: translate3d(0, 0, 0) rotate(168deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(314deg);
+            transform: translate3d(0, 0, 0) rotate(314deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(528deg);
-            transform: translate3d(0, 0, 100%) rotate(528deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(674deg);
+            transform: translate3d(0, 0, 100%) rotate(674deg);
   }
 }
 
 @keyframes shape-98 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(168deg);
-            transform: translate3d(0, 0, 0) rotate(168deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(314deg);
+            transform: translate3d(0, 0, 0) rotate(314deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(528deg);
-            transform: translate3d(0, 0, 100%) rotate(528deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(674deg);
+            transform: translate3d(0, 0, 100%) rotate(674deg);
   }
 }
 
@@ -4138,36 +4263,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-98 58s linear infinite;
-          animation: shape-98 58s linear infinite;
+  -webkit-animation: shape-98 53s linear infinite;
+          animation: shape-98 53s linear infinite;
 }
 
 .shape-container--98 .random-shape:after {
-  margin: 0 68.2rem;
-  color: #ff94a1;
-  font-size: 1.64rem;
+  margin: 0 67.2rem;
+  color: #31b4ff;
+  font-size: 1.44rem;
   content: "";
 }
 
 @-webkit-keyframes shape-99 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(274deg);
-            transform: translate3d(0, 0, 0) rotate(274deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(261deg);
+            transform: translate3d(0, 0, 0) rotate(261deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(634deg);
-            transform: translate3d(0, 0, 100%) rotate(634deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(621deg);
+            transform: translate3d(0, 0, 100%) rotate(621deg);
   }
 }
 
 @keyframes shape-99 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(274deg);
-            transform: translate3d(0, 0, 0) rotate(274deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(261deg);
+            transform: translate3d(0, 0, 0) rotate(261deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(634deg);
-            transform: translate3d(0, 0, 100%) rotate(634deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(621deg);
+            transform: translate3d(0, 0, 100%) rotate(621deg);
   }
 }
 
@@ -4175,36 +4300,36 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-99 41s linear infinite;
-          animation: shape-99 41s linear infinite;
+  -webkit-animation: shape-99 31s linear infinite;
+          animation: shape-99 31s linear infinite;
 }
 
 .shape-container--99 .random-shape:after {
-  margin: 0 66.2rem;
-  color: #cda1ff;
-  font-size: 1.24rem;
-  content: "";
+  margin: 0 65.2rem;
+  color: #4800c0;
+  font-size: 1.04rem;
+  content: "";
 }
 
 @-webkit-keyframes shape-100 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(144deg);
-            transform: translate3d(0, 0, 0) rotate(144deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(313deg);
+            transform: translate3d(0, 0, 0) rotate(313deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(504deg);
-            transform: translate3d(0, 0, 100%) rotate(504deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(673deg);
+            transform: translate3d(0, 0, 100%) rotate(673deg);
   }
 }
 
 @keyframes shape-100 {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(144deg);
-            transform: translate3d(0, 0, 0) rotate(144deg);
+    -webkit-transform: translate3d(0, 0, 0) rotate(313deg);
+            transform: translate3d(0, 0, 0) rotate(313deg);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 100%) rotate(504deg);
-            transform: translate3d(0, 0, 100%) rotate(504deg);
+    -webkit-transform: translate3d(0, 0, 100%) rotate(673deg);
+            transform: translate3d(0, 0, 100%) rotate(673deg);
   }
 }
 
@@ -4212,15 +4337,15 @@ header #burger-btn div {
   width: 100%;
   position: absolute;
   top: 0;
-  -webkit-animation: shape-100 55s linear infinite;
-          animation: shape-100 55s linear infinite;
+  -webkit-animation: shape-100 58s linear infinite;
+          animation: shape-100 58s linear infinite;
 }
 
 .shape-container--100 .random-shape:after {
-  margin: 0 63.2rem;
-  color: #31b4ff;
-  font-size: 0.64rem;
-  content: "";
+  margin: 0 65.2rem;
+  color: #ffef96;
+  font-size: 1.04rem;
+  content: "";
 }
 
 #services {
@@ -4565,67 +4690,67 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--2 .random-shape:after {
-    margin: 20rem 23.2rem;
+    margin: 20rem 27.2rem;
   }
   .shape-container--3 {
     top: 40%;
   }
   .shape-container--3 .random-shape:after {
-    margin: 20rem 23.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--4 {
     top: 40%;
   }
   .shape-container--4 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 28.2rem;
   }
   .shape-container--5 {
     top: 40%;
   }
   .shape-container--5 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--6 {
     top: 40%;
   }
   .shape-container--6 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--7 {
     top: 40%;
   }
   .shape-container--7 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 25.2rem;
   }
   .shape-container--8 {
     top: 40%;
   }
   .shape-container--8 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--9 {
     top: 40%;
   }
   .shape-container--9 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--10 {
     top: 40%;
   }
   .shape-container--10 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 25.2rem;
   }
   .shape-container--11 {
     top: 40%;
   }
   .shape-container--11 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 27.2rem;
   }
   .shape-container--12 {
     top: 40%;
   }
   .shape-container--12 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--13 {
     top: 40%;
@@ -4637,13 +4762,13 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--14 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 28.2rem;
   }
   .shape-container--15 {
     top: 40%;
   }
   .shape-container--15 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--16 {
     top: 40%;
@@ -4655,121 +4780,121 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--17 .random-shape:after {
-    margin: 20rem 25.2rem;
+    margin: 20rem 28.2rem;
   }
   .shape-container--18 {
     top: 40%;
   }
   .shape-container--18 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--19 {
     top: 40%;
   }
   .shape-container--19 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--20 {
     top: 40%;
   }
   .shape-container--20 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 23.2rem;
   }
   .shape-container--21 {
     top: 40%;
   }
   .shape-container--21 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 23.2rem;
   }
   .shape-container--22 {
     top: 40%;
   }
   .shape-container--22 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--23 {
     top: 40%;
   }
   .shape-container--23 .random-shape:after {
-    margin: 20rem 27.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--24 {
     top: 40%;
   }
   .shape-container--24 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 25.2rem;
   }
   .shape-container--25 {
     top: 40%;
   }
   .shape-container--25 .random-shape:after {
-    margin: 20rem 25.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--26 {
     top: 40%;
   }
   .shape-container--26 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 25.2rem;
   }
   .shape-container--27 {
     top: 40%;
   }
   .shape-container--27 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--28 {
     top: 40%;
   }
   .shape-container--28 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--29 {
     top: 40%;
   }
   .shape-container--29 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 25.2rem;
   }
   .shape-container--30 {
     top: 40%;
   }
   .shape-container--30 .random-shape:after {
-    margin: 20rem 28.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--31 {
     top: 40%;
   }
   .shape-container--31 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 21.2rem;
   }
   .shape-container--32 {
     top: 40%;
   }
   .shape-container--32 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--33 {
     top: 40%;
   }
   .shape-container--33 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--34 {
     top: 40%;
   }
   .shape-container--34 .random-shape:after {
-    margin: 20rem 23.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--35 {
     top: 40%;
   }
   .shape-container--35 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--36 {
     top: 40%;
   }
   .shape-container--36 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 27.2rem;
   }
   .shape-container--37 {
     top: 40%;
@@ -4781,49 +4906,49 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--38 .random-shape:after {
-    margin: 20rem 28.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--39 {
     top: 40%;
   }
   .shape-container--39 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 25.2rem;
   }
   .shape-container--40 {
     top: 40%;
   }
   .shape-container--40 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--41 {
     top: 40%;
   }
   .shape-container--41 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--42 {
     top: 40%;
   }
   .shape-container--42 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--43 {
     top: 40%;
   }
   .shape-container--43 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--44 {
     top: 40%;
   }
   .shape-container--44 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--45 {
     top: 40%;
   }
   .shape-container--45 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 23.2rem;
   }
   .shape-container--46 {
     top: 40%;
@@ -4835,97 +4960,97 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--47 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 28.2rem;
   }
   .shape-container--48 {
     top: 40%;
   }
   .shape-container--48 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 21.2rem;
   }
   .shape-container--49 {
     top: 40%;
   }
   .shape-container--49 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--50 {
     top: 40%;
   }
   .shape-container--50 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--51 {
     top: 40%;
   }
   .shape-container--51 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--52 {
     top: 40%;
   }
   .shape-container--52 .random-shape:after {
-    margin: 20rem 27.2rem;
+    margin: 20rem 21.2rem;
   }
   .shape-container--53 {
     top: 40%;
   }
   .shape-container--53 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 23.2rem;
   }
   .shape-container--54 {
     top: 40%;
   }
   .shape-container--54 .random-shape:after {
-    margin: 20rem 23.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--55 {
     top: 40%;
   }
   .shape-container--55 .random-shape:after {
-    margin: 20rem 28.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--56 {
     top: 40%;
   }
   .shape-container--56 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 27.2rem;
   }
   .shape-container--57 {
     top: 40%;
   }
   .shape-container--57 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--58 {
     top: 40%;
   }
   .shape-container--58 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--59 {
     top: 40%;
   }
   .shape-container--59 .random-shape:after {
-    margin: 20rem 27.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--60 {
     top: 40%;
   }
   .shape-container--60 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 27.2rem;
   }
   .shape-container--61 {
     top: 40%;
   }
   .shape-container--61 .random-shape:after {
-    margin: 20rem 28.2rem;
+    margin: 20rem 21.2rem;
   }
   .shape-container--62 {
     top: 40%;
   }
   .shape-container--62 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--63 {
     top: 40%;
@@ -4937,13 +5062,13 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--64 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--65 {
     top: 40%;
   }
   .shape-container--65 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--66 {
     top: 40%;
@@ -4955,31 +5080,31 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--67 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--68 {
     top: 40%;
   }
   .shape-container--68 .random-shape:after {
-    margin: 20rem 27.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--69 {
     top: 40%;
   }
   .shape-container--69 .random-shape:after {
-    margin: 20rem 23.2rem;
+    margin: 20rem 28.2rem;
   }
   .shape-container--70 {
     top: 40%;
   }
   .shape-container--70 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 21.2rem;
   }
   .shape-container--71 {
     top: 40%;
   }
   .shape-container--71 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 23.2rem;
   }
   .shape-container--72 {
     top: 40%;
@@ -4991,13 +5116,13 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--73 .random-shape:after {
-    margin: 20rem 28.2rem;
+    margin: 20rem 23.2rem;
   }
   .shape-container--74 {
     top: 40%;
   }
   .shape-container--74 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 23.2rem;
   }
   .shape-container--75 {
     top: 40%;
@@ -5009,25 +5134,25 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--76 .random-shape:after {
-    margin: 20rem 26.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--77 {
     top: 40%;
   }
   .shape-container--77 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 27.2rem;
   }
   .shape-container--78 {
     top: 40%;
   }
   .shape-container--78 .random-shape:after {
-    margin: 20rem 28.2rem;
+    margin: 20rem 27.2rem;
   }
   .shape-container--79 {
     top: 40%;
   }
   .shape-container--79 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 22.2rem;
   }
   .shape-container--80 {
     top: 40%;
@@ -5051,13 +5176,13 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--83 .random-shape:after {
-    margin: 20rem 21.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--84 {
     top: 40%;
   }
   .shape-container--84 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 28.2rem;
   }
   .shape-container--85 {
     top: 40%;
@@ -5069,13 +5194,13 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--86 .random-shape:after {
-    margin: 20rem 25.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--87 {
     top: 40%;
   }
   .shape-container--87 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--88 {
     top: 40%;
@@ -5087,7 +5212,7 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--89 .random-shape:after {
-    margin: 20rem 27.2rem;
+    margin: 20rem 24.2rem;
   }
   .shape-container--90 {
     top: 40%;
@@ -5099,61 +5224,61 @@ footer .copyright {
     top: 40%;
   }
   .shape-container--91 .random-shape:after {
-    margin: 20rem 30.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--92 {
     top: 40%;
   }
   .shape-container--92 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 21.2rem;
   }
   .shape-container--93 {
     top: 40%;
   }
   .shape-container--93 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--94 {
     top: 40%;
   }
   .shape-container--94 .random-shape:after {
-    margin: 20rem 27.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--95 {
     top: 40%;
   }
   .shape-container--95 .random-shape:after {
-    margin: 20rem 25.2rem;
+    margin: 20rem 29.2rem;
   }
   .shape-container--96 {
     top: 40%;
   }
   .shape-container--96 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 26.2rem;
   }
   .shape-container--97 {
     top: 40%;
   }
   .shape-container--97 .random-shape:after {
-    margin: 20rem 22.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--98 {
     top: 40%;
   }
   .shape-container--98 .random-shape:after {
-    margin: 20rem 29.2rem;
+    margin: 20rem 25.2rem;
   }
   .shape-container--99 {
     top: 40%;
   }
   .shape-container--99 .random-shape:after {
-    margin: 20rem 24.2rem;
+    margin: 20rem 30.2rem;
   }
   .shape-container--100 {
     top: 40%;
   }
   .shape-container--100 .random-shape:after {
-    margin: 20rem 25.2rem;
+    margin: 20rem 23.2rem;
   }
   header {
     height: auto;
@@ -5216,8 +5341,22 @@ footer .copyright {
     width: 75px;
   }
   #about .article-container {
-    -ms-grid-columns: auto;
-        grid-template-columns: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #about .article-container article {
+    width: 100%;
+  }
+  #about .article-container .about-cards {
+    width: 100%;
+  }
+  #about .article-container .about-cards .card {
+    width: 100%;
+  }
+  #about .article-container .about-cards .card .question {
+    padding: 10px 15px;
   }
   #services .card-container {
     -webkit-box-orient: vertical;

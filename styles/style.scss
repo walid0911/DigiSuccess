@@ -309,7 +309,7 @@ header {
     position: relative;
     width: 100vw;
     overflow: hidden;
-    padding: 50px 0;
+    padding: 50px 0 100px;
     background-color: #fdfdfd;
     display: flex;
     flex-direction: column;
@@ -319,44 +319,132 @@ header {
     .article-container {
         position: relative;
         z-index: 2;
-        width: 85vw;
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-column-gap: 50px;
-        grid-row-gap: 50px;
+        width: 90vw;
+        display: flex;
+        align-items: center;
 
         article {
+            width: 50%;
             font-family: "poppins", sans-serif;
-            padding: 15px 20px;
-            background-color: #266d78ee;
+            padding: 15px 20px 50px;
+            background-color: #fdfdfd86;
             border-radius: 10px;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
 
             h1 {
                 font-size: clamp(1.2rem, 5vw, 2rem);
                 font-weight: 500;
-                color: #9ed155;
+                color: hsl(188, 52%, 10%);
                 margin-bottom: 10px;
             }
 
             p {
                 font-size: clamp(.8rem, 5vw, 1rem);
                 font-weight: 300;
-                color: #fdfdfd;
+                color: hsl(188, 52%, 20%);
             }
         }
+
+        .about-cards {
+            position: relative;
+            top: 2em;
+            width: 50%;
+            font-family: 'poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            .card {
+                width: 60%;
+                margin-bottom: 2em;
+    
+                .question {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    z-index: 2;
+                    padding: 1em 2em;
+                    background: transparent;
+                    color: #266d78;
+                    cursor: pointer;
+                    outline: none;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+                    transition: all .3s ease-in;
+    
+                    &:hover {
+                        background: #50b883;
+                        color: #fdfdfd;
+                    }
+    
+                    &::-webkit-details-marker {
+                        display: none;
+                    }
+    
+                    .drop {
+                        position: absolute;
+                        right: 10%;
+                        display: flex;
+                        align-items: center;
+    
+    
+                        .left, .right {
+                            position: relative;
+                            width: 15px;
+                            height: 3px;
+                            background: #1c5058;
+                            border-radius: 20%;
+                        }
+    
+                        .left {
+                            right: -2.5px;
+                            transform: rotate(45deg);
+                        }
+    
+                        .right {
+                            left: -2.5px;
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+    
+                .content {
+                    padding: 10px 20px;
+                    background-color: #fdfdfd86;
+                    color: hsl(188, 52%, 10%);
+                    font-size: .8rem;
+                }
+            }
+        }
+    
     }
 
     &::before {
         content: '';
         position: absolute;
-        z-index: 1;
+        z-index: 4;
         top: 0;
         left: 0;
         width: 100%;
-        background-color: #266d78;
+        background-color: #266d78ee;
         height: 100%;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+details[open] summary ~ * {
+    animation: sweep .3s ease-in;
+}
+
+@keyframes sweep {
+    from {
+        opacity: 0;
+        margin-top: -20px;
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0;
     }
 }
 
@@ -367,6 +455,13 @@ header {
 @keyframes bg {
     to {
         clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    }
+}
+
+.flip {
+    .drop {
+        transform: rotate(180deg);
+        transition: .3s ease-in;
     }
 }
 
@@ -752,7 +847,22 @@ footer {
 
     #about {
         .article-container {
-            grid-template-columns: auto;
+            flex-direction: column;
+
+            article {
+                width: 100%;
+            }
+
+            .about-cards {
+                width: 100%;
+                .card {
+                    width: 100%;
+
+                    .question {
+                        padding: 10px 15px;
+                    }
+                }
+            }
         }
     }
 
